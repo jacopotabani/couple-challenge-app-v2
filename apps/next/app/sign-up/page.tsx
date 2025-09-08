@@ -40,6 +40,11 @@ export default function SignUp() {
     }
   }
 
+  const googleSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: 'google',
+    })
+  }
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="grid gap-4">
@@ -148,7 +153,9 @@ export default function SignUp() {
             </div>
           </div>
         </div>
-
+        <button type="button" onClick={googleSignIn}>
+          google login
+        </button>
         <button
           type="submit"
           className="w-full"
@@ -167,18 +174,22 @@ export default function SignUp() {
 
               fetchOptions: {
                 onResponse: () => {
+                  console.log('on response')
                   setLoading(false)
                 },
 
                 onRequest: () => {
+                  console.log('on request')
                   setLoading(true)
                 },
 
                 onError: (ctx) => {
+                  console.log('on error')
                   console.error(ctx.error.message)
                 },
 
                 onSuccess: async () => {
+                  console.log('on success')
                   router.push('/dashboard')
                 },
               },

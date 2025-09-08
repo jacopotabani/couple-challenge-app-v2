@@ -6,11 +6,16 @@ module.exports = (api) => {
       [
         require.resolve('babel-plugin-module-resolver'),
         {
-          root: ['../..'],
+          root: ['./'],
           alias: {
+            '@': './',
             // define aliases to shorten the import paths
             app: '../../packages/app',
             '@my/ui': '../../packages/ui',
+            'better-auth/react': '../../node_modules/better-auth/dist/client/react/index.cjs',
+            'better-auth/client/plugins':
+              '../../node_modules/better-auth/dist/client/plugins/index.cjs',
+            '@better-auth/expo/client': '../../node_modules/@better-auth/expo/dist/client.cjs',
           },
           extensions: ['.js', '.jsx', '.tsx', '.ios.js', '.android.js'],
         },

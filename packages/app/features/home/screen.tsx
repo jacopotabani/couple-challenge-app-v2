@@ -15,13 +15,19 @@ import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
 import { useState } from 'react'
 import { Platform } from 'react-native'
 import { useLink } from 'solito/navigation'
+// import { authClient } from '../lib/auth/auth-client'
 
 export function HomeScreen({ pagesMode = false }: { pagesMode?: boolean }) {
   const linkTarget = pagesMode ? '/pages-example-user' : '/user'
   const linkProps = useLink({
     href: `${linkTarget}/nate`,
   })
+  const signUplinkTarget = '/sign-up'
+  const signUplinkProps = useLink({
+    href: `${signUplinkTarget}/`,
+  })
 
+  
   return (
     <YStack flex={1} justify="center" items="center" gap="$8" p="$4" bg="$background">      
       <XStack
@@ -55,7 +61,9 @@ export function HomeScreen({ pagesMode = false }: { pagesMode?: boolean }) {
         <Separator />
       </YStack>
 
+      {/* <Button onPress={handleGoogleLogin}>Google logi</Button> */}
       <Button {...linkProps}>Link to user</Button>
+      <Button {...signUplinkProps}>Link to sign-up</Button>
 
       <SheetDemo />
     </YStack>

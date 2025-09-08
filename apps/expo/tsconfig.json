@@ -3,12 +3,18 @@
   "include": [
     "app/**/*.ts",
     "app/**/*.tsx",
+    "lib/**/*",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
   ],
   "compilerOptions": {
     "composite": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
   },
   "references": []
 }

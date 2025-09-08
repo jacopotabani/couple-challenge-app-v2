@@ -1,36 +1,50 @@
-import { useState } from "react";
-import { View, TextInput, Button, Alert } from "react-native";
-import { authClient } from "../lib/auth/auth-client";
+import { useState } from 'react'
+import { View, TextInput, Button, Alert } from 'react-native'
+import { authClient } from '../lib/auth/auth-client'
 
 export default function SignUp() {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleSignUp = async () => {
     try {
-      setLoading(true);
+      setLoading(true)
       const { data, error } = await authClient.signUp.email({
         email,
         password,
         name,
-      });
+      })
 
       if (error) {
-        Alert.alert("Error", error.message);
-        return;
+        Alert.alert('Error', error.message)
+        return
       }
 
-      Alert.alert("Success", "Account created successfully!");
-      console.log("Signed up successfully:", data);
+      Alert.alert('Success', 'Account created successfully!')
+      console.log('Signed up successfully:', data)
     } catch (error) {
-      Alert.alert("Error", "Failed to sign up");
-      console.error("Sign up error:", error);
+      Alert.alert('Error', 'Failed to sign up')
+      console.error('Sign up error:', error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
+
+  const handleGoogleLogin = async () => {
+    console.log('handleGoogleLogin')
+    try {
+      const { data, error } = await authClient.signIn.social({
+        provider: 'google',
+        // callbackURL: '/dashboard', // this will be converted to a deep link (eg. `myapp://dashboard`) on native
+      })
+
+      console.log({ data, error })
+    } catch (error) {
+      console.error('Google login error:', error)
+    }
+  }
 
   return (
     <View style={{ padding: 20 }}>
@@ -56,10 +70,11 @@ export default function SignUp() {
         secureTextEntry
       />
       <Button
-        title={loading ? "Signing Up..." : "Sign Up"}
+        title={loading ? 'Signing Up...' : 'Sign Up'}
         onPress={handleSignUp}
         disabled={loading}
       />
+      <Button title={'Google login'} onPress={handleGoogleLogin} disabled={loading} />
     </View>
-  );
+  )
 }

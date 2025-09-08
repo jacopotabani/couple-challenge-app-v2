@@ -1,14 +1,14 @@
-import { createAuthClient } from "better-auth/react";
-import { expoClient } from "@better-auth/expo/client";
-import * as SecureStore from "expo-secure-store";
+import { createAuthClient } from 'better-auth/react'
+import { expoClient } from '@better-auth/expo/client'
+import * as SecureStore from 'expo-secure-store'
 
 export const authClient = createAuthClient({
-  baseURL: "http://192.168.1.169:3000",
+  baseURL: 'http://192.168.178.146:3000',
   plugins: [
     expoClient({
-      scheme: "mobile",
-      storagePrefix: "mobile",
+      scheme: 'yourprojectsname',
+      storagePrefix: 'yourprojectsname',
       storage: SecureStore,
     }),
   ],
-});
+})

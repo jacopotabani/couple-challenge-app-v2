@@ -12,6 +12,7 @@ export default function Page() {
         <title>User</title>
       </Head>
       <UserDetailScreen id={id} />
+      <p>this is pages router</p>
     </>
   )
 }

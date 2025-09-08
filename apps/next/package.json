@@ -11,6 +11,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@my/auth": "workspace:*",
     "@tamagui/config": "^1.132.18",
     "@tamagui/next-theme": "^1.132.18",
     "app": "0.0.0",

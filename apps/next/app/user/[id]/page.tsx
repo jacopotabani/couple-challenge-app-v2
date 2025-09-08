@@ -5,5 +5,10 @@ import { useParams } from 'solito/navigation'
 
 export default function Page() {
   const { id } = useParams()
-  return <UserDetailScreen id={id as string} />
+  return (
+    <>
+      <UserDetailScreen id={id as string} />
+      <p>This is app router</p>
+    </>
+  )
 }

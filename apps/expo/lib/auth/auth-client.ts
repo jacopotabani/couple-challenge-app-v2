@@ -6,8 +6,8 @@ export const authClient = createAuthClient({
   baseURL: 'http://192.168.178.146:3000',
   plugins: [
     expoClient({
-      scheme: 'yourprojectsname',
-      storagePrefix: 'yourprojectsname',
+      scheme: 'couple-challenge',
+      storagePrefix: 'couple-challenge',
       storage: SecureStore,
     }),
   ],

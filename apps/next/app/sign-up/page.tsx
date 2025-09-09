@@ -41,9 +41,13 @@ export default function SignUp() {
   }
 
   const googleSignIn = async () => {
-    const data = await authClient.signIn.social({
-      provider: 'google',
-    })
+    try {
+      const data = await authClient.signIn.social({
+        provider: 'google',
+      })
+    } catch (error) {
+      console.error('Error during Google sign-in:', error)
+    }
   }
   return (
     <div className="flex justify-center items-center h-screen">

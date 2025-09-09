@@ -8390,6 +8390,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"couple-challenge@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "couple-challenge@workspace:."
+  dependencies:
+    "@babel/runtime": "npm:^7.24.6"
+    "@biomejs/biome": "npm:^1.9.3"
+    "@tamagui/cli": "npm:^1.132.18"
+    check-dependency-version-consistency: "npm:^4.1.0"
+    eslint: "npm:^9.3.0"
+    husky: "npm:^9.1.6"
+    prettier: "npm:^3.3.3"
+    turbo: "npm:^1.13.4"
+    typescript: "npm:~5.8.3"
+    ultra-runner: "npm:^3.10.5"
+    vitest: "npm:^2.1.1"
+  languageName: unknown
+  linkType: soft
+
 "create-require@npm:^1.1.0":
   version: 1.1.1
   resolution: "create-require@npm:1.1.1"
@@ -16477,24 +16495,6 @@ __metadata:
   checksum: 10/1120cf716606ec6a8e25cc9b6ada79d7b91e6a599bba1a6664e6badc8b5f37987d7df7d9ad0344f717a042781fd8e1e999de08614a5afea451b68902421036b5
   languageName: node
   linkType: hard
-
-"starter-free@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "starter-free@workspace:."
-  dependencies:
-    "@babel/runtime": "npm:^7.24.6"
-    "@biomejs/biome": "npm:^1.9.3"
-    "@tamagui/cli": "npm:^1.132.18"
-    check-dependency-version-consistency: "npm:^4.1.0"
-    eslint: "npm:^9.3.0"
-    husky: "npm:^9.1.6"
-    prettier: "npm:^3.3.3"
-    turbo: "npm:^1.13.4"
-    typescript: "npm:~5.8.3"
-    ultra-runner: "npm:^3.10.5"
-    vitest: "npm:^2.1.1"
-  languageName: unknown
-  linkType: soft
 
 "stat-mode@npm:0.3.0":
   version: 0.3.0

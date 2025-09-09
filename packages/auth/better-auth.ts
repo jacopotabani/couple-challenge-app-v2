@@ -5,7 +5,7 @@ import { mongodbAdapter } from 'better-auth/adapters/mongodb'
 
 export const createAuth = (databaseUrl: string) => {
   const client = new MongoClient(databaseUrl)
-  const db = client.db('couple_app_db_3')
+  const db = client.db(process.env.DB_NAME)
 
   return betterAuth({
     database: mongodbAdapter(db),
@@ -23,7 +23,7 @@ export const createAuth = (databaseUrl: string) => {
       'expo://',
       'mobile://',
       'exp://',
-      'yourprojectsname://',
+      'couple-challenge://',
       'http://localhost:3000',
       'http://192.168.1.169:3000',
       'http://192.168.178.146:3000',

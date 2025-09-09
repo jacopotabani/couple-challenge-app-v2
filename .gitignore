@@ -27,6 +27,7 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+.env
 # local env files
 .env.local
 .env.development.local
@@ -46,3 +47,7 @@ thumbs.db
 
 # turbo build log
 **/.turbo/*
+
+
+#mongodb
+data/*

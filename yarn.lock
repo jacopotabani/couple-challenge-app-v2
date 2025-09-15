@@ -2780,6 +2780,7 @@ __metadata:
     "@my/config": "npm:0.0.1"
     "@tamagui/build": "npm:^1.132.18"
     "@tamagui/toast": "npm:^1.132.18"
+    "@ts-react/form": "npm:^1.8.3"
     tamagui: "npm:^1.132.18"
   languageName: unknown
   linkType: soft
@@ -3685,6 +3686,15 @@ __metadata:
   dependencies:
     nanoid: "npm:^3.3.11"
   checksum: 10/b2f41b084d9ff69ac934e798fabca149a7d2cfc6ca1899d9ffbb68f8378c02277752e68783c264ea5068be9c8738d0d5112abb177c00c0365cfd2a133d560a8c
+  languageName: node
+  linkType: hard
+
+"@rehookify/datepicker@npm:^6.6.8":
+  version: 6.6.8
+  resolution: "@rehookify/datepicker@npm:6.6.8"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 10/6d52111be2f2d7446eed2815a3ece2ab6a78a9db416cc70460bf050b28cf0dd75d83aa4ddbd986b993a835294a885035ee6b0e6fba4813f5a2f967dc65f25a54
   languageName: node
   linkType: hard
 
@@ -5819,6 +5829,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ts-react/form@npm:^1.8.3":
+  version: 1.8.3
+  resolution: "@ts-react/form@npm:1.8.3"
+  peerDependencies:
+    "@hookform/resolvers": ^2.8.0 || ^3.0.0
+    react: ^16.8.0 || ^17 || ^18
+    react-hook-form: ^7.39.0
+    zod: ^3.19.0
+  checksum: 10/7faf42ca0f778337064bed9f80012deae59f6a614cb7a8a8af2b35101bcdc2542468a911dae0835ecba09e5e09587b2758ce942e0d6eaffce0fb75ebee6af833
+  languageName: node
+  linkType: hard
+
 "@tsconfig/node10@npm:^1.0.7":
   version: 1.0.11
   resolution: "@tsconfig/node10@npm:1.0.11"
@@ -6975,6 +6997,7 @@ __metadata:
     "@my/auth": "workspace:*"
     "@my/ui": "npm:0.0.1"
     "@react-navigation/native": "npm:^6.1.17"
+    "@rehookify/datepicker": "npm:^6.6.8"
     "@tamagui/animations-react-native": "npm:^1.132.18"
     "@tamagui/colors": "npm:^1.132.18"
     "@tamagui/font-inter": "npm:^1.132.18"
@@ -6985,10 +7008,14 @@ __metadata:
     "@types/react-native": "npm:^0.73.0"
     burnt: "npm:^0.12.2"
     expo-constants: "npm:~17.1.6"
+    expo-document-picker: "npm:~13.1.5"
+    expo-image-picker: "npm:~16.1.4"
     expo-linking: "npm:~7.1.4"
+    react-dropzone: "npm:^14.3.8"
     react-hook-form: "npm:^7.62.0"
     react-native-safe-area-context: "npm:5.4.0"
     solito: "npm:^4.2.2"
+    zod: "npm:^4.1.8"
   languageName: unknown
   linkType: soft
 
@@ -7237,6 +7264,13 @@ __metadata:
   version: 3.1.1
   resolution: "async-sema@npm:3.1.1"
   checksum: 10/ee0225c2e7b72ae76d66157499f61a881a050824019edc54fa6ec789313076790729557556fbbe237af0083173c66fb2edf1c9cc45c522c5f846b66c0a94ddb3
+  languageName: node
+  linkType: hard
+
+"attr-accept@npm:^2.2.4":
+  version: 2.2.5
+  resolution: "attr-accept@npm:2.2.5"
+  checksum: 10/474b1c53e62c5b881c745d1f098196f190c8b493245e95d4b0fea9298d3acb56f551868fc12806885277e55e9d8ad3c5963e92d93456f4e4081dfc5190977bfd
   languageName: node
   linkType: hard
 
@@ -10062,7 +10096,9 @@ __metadata:
     expo: "npm:~53.0.8"
     expo-constants: "npm:^17.1.7"
     expo-dev-client: "npm:~5.1.8"
+    expo-document-picker: "npm:~13.1.5"
     expo-font: "npm:~13.3.1"
+    expo-image-picker: "npm:~16.1.4"
     expo-linear-gradient: "npm:~14.1.4"
     expo-linking: "npm:^7.1.7"
     expo-router: "npm:~5.0.6"
@@ -10075,11 +10111,12 @@ __metadata:
     react: "npm:19.0.0"
     react-dom: "npm:19.0.0"
     react-native: "npm:0.79.2"
-    react-native-gesture-handler: "npm:~2.24.0"
+    react-native-gesture-handler: "npm:^2.28.0"
     react-native-safe-area-context: "npm:5.4.0"
     react-native-screens: "npm:~4.10.0"
     react-native-svg: "npm:15.8.0"
     react-native-web: "npm:^0.20.0"
+    react-native-webcrypto: "npm:^1.0.0-alpha.3"
     typescript: "npm:~5.8.3"
   languageName: unknown
   linkType: soft
@@ -10160,6 +10197,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-document-picker@npm:~13.1.5":
+  version: 13.1.6
+  resolution: "expo-document-picker@npm:13.1.6"
+  peerDependencies:
+    expo: "*"
+  checksum: 10/6b4974145476ba454a84d6affeec7482a9d85241d7e9e04239e7864189a28fce4007aafdff16524b0e4bdcb10370605aba9211c136b58884425f06d8b133f9ad
+  languageName: node
+  linkType: hard
+
 "expo-eas-client@npm:~0.14.4":
   version: 0.14.4
   resolution: "expo-eas-client@npm:0.14.4"
@@ -10186,6 +10232,26 @@ __metadata:
     expo: "*"
     react: "*"
   checksum: 10/ac3de637e226c5a68049b55e1f90989fae80464f4f5919609a729a9296d79fa294f7b8774fd46b466855882a5133a3badb576957735d4c637f6fffa7720db9ce
+  languageName: node
+  linkType: hard
+
+"expo-image-loader@npm:~5.1.0":
+  version: 5.1.0
+  resolution: "expo-image-loader@npm:5.1.0"
+  peerDependencies:
+    expo: "*"
+  checksum: 10/7c99e534dff619090f39f753e460471e4a84cc868ea21269e3c060f348e216c3ad1f0762512a048885d88380e4c4b763a77ac9d4688a85d31b0ee61834613968
+  languageName: node
+  linkType: hard
+
+"expo-image-picker@npm:~16.1.4":
+  version: 16.1.4
+  resolution: "expo-image-picker@npm:16.1.4"
+  dependencies:
+    expo-image-loader: "npm:~5.1.0"
+  peerDependencies:
+    expo: "*"
+  checksum: 10/a6006614f6c2f42177747010f35901d85cbb673031cfeb1acac55b8c23c8bd92f432191df5759555bf4401ed3c2eee8fc96ea97500a2d75e0a1b95d048aadc7a
   languageName: node
   linkType: hard
 
@@ -10478,6 +10544,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-base64-decode@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "fast-base64-decode@npm:1.0.0"
+  checksum: 10/4c59eb1775a7f132333f296c5082476fdcc8f58d023c42ed6d378d2e2da4c328c7a71562f271181a725dd17cdaa8f2805346cc330cdbad3b8e4b9751508bd0a3
+  languageName: node
+  linkType: hard
+
+"fast-base64-encode@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "fast-base64-encode@npm:1.0.0"
+  checksum: 10/1a711d2cfd663ae612900f0836b1c51cdcb797893b312db818e61fe55fde41a201d1f06d0814abc74fd3aeb92826ef45aa889bf1a1a7d68f52748d92f4d4bcd2
+  languageName: node
+  linkType: hard
+
+"fast-base64-length@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "fast-base64-length@npm:1.0.0"
+  checksum: 10/f4602d678d83773b9e9ef3141da99241d0dc2fc526bc46c244e6115d11c998821dd4ac3457c182d8e71818e1b2111674e0cf60dc7ec299c3f55ffafdf6471817
+  languageName: node
+  linkType: hard
+
 "fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -10605,6 +10692,15 @@ __metadata:
   peerDependencies:
     webpack: ^4.0.0 || ^5.0.0
   checksum: 10/3a854be3a7501bdb0fd8a1c0d45c156c0dc8f0afced07cbdac0b13a79c2f2a03f7770d68cb555ff30b5ea7c20719df34e1b2bd896c93e3138ee31f0bdc560310
+  languageName: node
+  linkType: hard
+
+"file-selector@npm:^2.1.0":
+  version: 2.1.2
+  resolution: "file-selector@npm:2.1.2"
+  dependencies:
+    tslib: "npm:^2.7.0"
+  checksum: 10/2a6be0e1904df85f8705a5171fd3b93c1b1ff2ad0143556adb78ac4de899bfc0ba1a20083b4febd4f7000759ec9119a31af76a057e29dd9215907da69ac95e50
   languageName: node
   linkType: hard
 
@@ -15149,6 +15245,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-dropzone@npm:^14.3.8":
+  version: 14.3.8
+  resolution: "react-dropzone@npm:14.3.8"
+  dependencies:
+    attr-accept: "npm:^2.2.4"
+    file-selector: "npm:^2.1.0"
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    react: ">= 16.8 || 18.0.0"
+  checksum: 10/31d5089c2acb4528a279761473a00a1c148b78ae41a6ac49ed09ee94f1d44595437188308ec838debfa0d08082893b170dc072e680aca00469793a05d61b07f2
+  languageName: node
+  linkType: hard
+
 "react-fast-compare@npm:^3.2.2":
   version: 3.2.2
   resolution: "react-fast-compare@npm:3.2.2"
@@ -15205,9 +15314,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-gesture-handler@npm:~2.24.0":
-  version: 2.24.0
-  resolution: "react-native-gesture-handler@npm:2.24.0"
+"react-native-gesture-handler@npm:^2.28.0":
+  version: 2.28.0
+  resolution: "react-native-gesture-handler@npm:2.28.0"
   dependencies:
     "@egjs/hammerjs": "npm:^2.0.17"
     hoist-non-react-statics: "npm:^3.3.0"
@@ -15215,7 +15324,7 @@ __metadata:
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 10/e8e97fde1a1a4e776d448870c5a89e53df64836a7a131ba8348712038c4b6ff0a99e59be5702b98d5687a35ba57d260a02a50da9d7702427b62bc7abea2fe687
+  checksum: 10/856a9cb50b467e5e21cdd50930be68fee20f1c8ea13caa3cabb0bebd1345d0a847cd7b761a39b2d42b986b9d8e82e9419ccaf481b17373233c7ece7fed08dc70
   languageName: node
   linkType: hard
 
@@ -15282,6 +15391,19 @@ __metadata:
     react: ^18.0.0
     react-dom: ^18.0.0
   checksum: 10/65e0660fb37c1f7e3864a7b506acdd3bbf249de516166775cbf2f371bc28f6e965bc01cbd214bfe820c1a933aee58b6fb29298ccd0dc5f412f147a57e7126dd9
+  languageName: node
+  linkType: hard
+
+"react-native-webcrypto@npm:^1.0.0-alpha.3":
+  version: 1.0.0-alpha.3
+  resolution: "react-native-webcrypto@npm:1.0.0-alpha.3"
+  dependencies:
+    fast-base64-decode: "npm:^1.0.0"
+    fast-base64-encode: "npm:^1.0.0"
+    fast-base64-length: "npm:^1.0.0"
+  peerDependencies:
+    react-native: ">=0.56"
+  checksum: 10/5492910849a54ca4c62dea46c1c4ce38b3f5af86bf671b541dbaae3203884a608991d0b1d6fb0778579c3cee11886d70ac81f50b37d9f7cb59fd7a45d9793d05
   languageName: node
   linkType: hard
 
@@ -17297,7 +17419,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0, tslib@npm:^2.8.0, tslib@npm:^2.8.1":
+"tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0, tslib@npm:^2.7.0, tslib@npm:^2.8.0, tslib@npm:^2.8.1":
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: 10/3e2e043d5c2316461cb54e5c7fe02c30ef6dccb3384717ca22ae5c6b5bc95232a6241df19c622d9c73b809bea33b187f6dbc73030963e29950c2141bc32a79f7
@@ -18556,5 +18678,12 @@ __metadata:
   version: 4.1.5
   resolution: "zod@npm:4.1.5"
   checksum: 10/2ac6bef2d6647de6e673b6fa07ee392b71eb6fd6ccb2be8899d8d853084dd8b3992d4d2cf267eba6f8495a35803e2ec254509194fd0849ed0a822dea7ae4a765
+  languageName: node
+  linkType: hard
+
+"zod@npm:^4.1.8":
+  version: 4.1.8
+  resolution: "zod@npm:4.1.8"
+  checksum: 10/1a317c26b39d145d7045be6775d30497545fd1c5a13ce0f3f373ec06676ff7b2e0715f522525c183aae01f18d05d4789ee19533c3e9203087a5adf6753e588e5
   languageName: node
   linkType: hard

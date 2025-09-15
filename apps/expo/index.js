@@ -1,3 +1,4 @@
+import 'react-native-webcrypto'
 import 'setimmediate'
 
 if (!global?.setImmediate) {

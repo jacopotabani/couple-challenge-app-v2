@@ -35,6 +35,9 @@ module.exports = () => {
     typescript: {
       ignoreBuildErrors: true,
     },
+    images: {
+      domains: ['avatars.githubusercontent.com', 'lh3.googleusercontent.com'],
+    },
     transpilePackages: [
       'solito',
       'react-native-web',

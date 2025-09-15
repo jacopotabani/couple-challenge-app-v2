@@ -2,7 +2,7 @@ import { AnimatePresence, Button, H1, isWeb, Label, Paragraph, Text, Spinner, Vi
 import { useState } from 'react'
 import { Eye, EyeOff, Info } from '@tamagui/lucide-icons'
 import { FormCard } from './components/layoutParts'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm, Controller, FormProvider } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SafeAreaView } from 'react-native'
@@ -10,6 +10,12 @@ import { Input } from './inputs/components/inputsParts'
 import { SocialLogin } from './components/SocialLogin'
 import { useLink } from 'solito/navigation'
 import { Link } from 'solito/link'
+import { SchemaForm, formFields } from 'app/utils/SchemaForm'
+import {
+  H2,
+  Theme,
+  YStack,
+} from '@my/ui'
 
 const schema = z
   .object({
@@ -30,21 +36,22 @@ export function SignUpScreen() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [loading, setLoading] = useState(false)
+  const form = useForm<z.infer<typeof schema>>()
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(schema),
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      confirmedPassword: '',
-    },
-  })
+  // const {
+  //   control,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm({
+  //   resolver: zodResolver(schema),
+  //   defaultValues: {
+  //     firstName: '',
+  //     lastName: '',
+  //     email: '',
+  //     password: '',
+  //     confirmedPassword: '',
+  //   },
+  // })
   const onSubmit = (data: z.infer<typeof schema>) => {
     setLoading(true)
     setTimeout(() => {
@@ -71,8 +78,57 @@ export function SignUpScreen() {
       >
         Create an account
       </H1>
-
-      <View gap="$5">
+{/* <FormProvider {...form}>
+      {form.formState.isSubmitSuccessful ? (
+        <View>
+          <Paragraph textAlign="center" mb="$4">
+            Your account has been created successfully!
+          </Paragraph>
+          </View>
+      ) : (
+        <SchemaForm
+          form={form}
+          schema={schema}
+          defaultValues={{
+            email: '',
+            password: '',
+          }}
+          props={{
+            password: {
+              secureTextEntry: true,
+            },
+          }}
+          onSubmit={() => console.log("submit")}
+          renderAfter={({ submit }) => (
+            <>
+              <Theme inverse>
+                <Button onPress={() => submit()} br="$10">
+                  Sign Up
+                </Button>
+              </Theme>
+              <SignInLink />
+              {isWeb && <SocialLogin />}
+            </>
+          )}
+        >
+          {(fields) => (
+            <>
+              <YStack gap="$3" mb="$4">
+                <H2 $sm={{ size: '$8' }}>Get Started</H2>
+                <Paragraph theme="alt2">Create a new account</Paragraph>
+              </YStack>
+              {Object.values(fields)}
+              {!isWeb && (
+                <YStack mt="$4">
+                  <SocialLogin />
+                </YStack>
+              )}
+            </>
+          )}
+        </SchemaForm>
+      )}
+    </FormProvider> */}
+      {/* <View gap="$5">
         <View
           flexWrap="wrap"
           flexDirection="row"
@@ -377,7 +433,7 @@ export function SignUpScreen() {
           Sign Up
         </Button>
         <SocialLogin />
-      </View>
+      </View> */}
       <SignInLink />
       {!isWeb && <SafeAreaView />}
     </FormCard>

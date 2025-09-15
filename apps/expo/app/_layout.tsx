@@ -5,6 +5,7 @@ import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
 import { Provider } from 'app/provider'
 import { NativeToast } from '@my/ui/src/NativeToast'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 export const unstable_settings = {
   // Ensure that reloading on `/user` keeps a back button present.
@@ -38,11 +39,34 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme()
 
   return (
-    <Provider>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack />
-        <NativeToast />
-      </ThemeProvider>
-    </Provider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Provider>
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <Stack screenOptions={{ headerShown: false }}>
+            {/* <Stack.Screen
+              name="(drawer)/(tabs)/index"
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="create"
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="settings/index"
+              options={{
+                headerShown: true,
+                headerBackTitle: 'Back',
+              }}
+            /> */}
+            <Stack />
+          </Stack>
+          <NativeToast />
+        </ThemeProvider>
+      </Provider>
+    </GestureHandlerRootView>
   )
 }

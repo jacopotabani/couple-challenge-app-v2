@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { View, TextInput, Button, Alert } from 'react-native'
-import { authClient } from '../../lib/auth/auth-client'
-import { SignInRightImage } from 'app/features/auth/AuthLayoutWrapper'
+// import { authClient } from '../../lib/auth/auth-client'
+import { SignUpScreen } from 'app/features/auth/SignUpScreen'
 
 export default function SignUp() {
   const [email, setEmail] = useState('')
@@ -9,46 +9,46 @@ export default function SignUp() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const handleSignUp = async () => {
-    try {
-      setLoading(true)
-      const { data, error } = await authClient.signUp.email({
-        email,
-        password,
-        name,
-      })
+  // const handleSignUp = async () => {
+  //   try {
+  //     setLoading(true)
+  //     const { data, error } = await authClient.signUp.email({
+  //       email,
+  //       password,
+  //       name,
+  //     })
 
-      if (error) {
-        Alert.alert('Error', error.message)
-        return
-      }
+  //     if (error) {
+  //       Alert.alert('Error', error.message)
+  //       return
+  //     }
 
-      Alert.alert('Success', 'Account created successfully!')
-      console.log('Signed up successfully:', data)
-    } catch (error) {
-      Alert.alert('Error', 'Failed to sign up')
-      console.error('Sign up error:', error)
-    } finally {
-      setLoading(false)
-    }
-  }
+  //     Alert.alert('Success', 'Account created successfully!')
+  //     console.log('Signed up successfully:', data)
+  //   } catch (error) {
+  //     Alert.alert('Error', 'Failed to sign up')
+  //     console.error('Sign up error:', error)
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
 
-  const handleGoogleLogin = async () => {
-    console.log('handleGoogleLogin')
-    try {
-      const { data, error } = await authClient.signIn.social({
-        provider: 'google',
-        // callbackURL: '/dashboard', // this will be converted to a deep link (eg. `myapp://dashboard`) on native
-      })
+  // const handleGoogleLogin = async () => {
+  //   console.log('handleGoogleLogin')
+  //   try {
+  //     const { data, error } = await authClient.signIn.social({
+  //       provider: 'google',
+  //       // callbackURL: '/dashboard', // this will be converted to a deep link (eg. `myapp://dashboard`) on native
+  //     })
 
-      console.log({ data, error })
-    } catch (error) {
-      console.error('Google login error:', error)
-    }
-  }
+  //     console.log({ data, error })
+  //   } catch (error) {
+  //     console.error('Google login error:', error)
+  //   }
+  // }
 
   return (
-    <SignInRightImage />
+    <SignUpScreen />
     // <View style={{ padding: 20 }}>
     //   <TextInput
     //     placeholder="Name"

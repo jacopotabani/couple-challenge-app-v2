@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { authClient } from 'lib/auth-client'
-
+import { SignUpScreen } from 'app/features/auth/SignUpScreen'
 export default function SignUp() {
   const [firstName, setFirstName] = useState('')
 
@@ -50,160 +50,161 @@ export default function SignUp() {
     }
   }
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="grid gap-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="grid gap-2">
-            <label htmlFor="first-name">First name</label>
+    <SignUpScreen />
+    // <div className="flex justify-center items-center h-screen">
+    //   <div className="grid gap-4">
+    //     <div className="grid grid-cols-2 gap-4">
+    //       <div className="grid gap-2">
+    //         <label htmlFor="first-name">First name</label>
 
-            <input
-              id="first-name"
-              placeholder="Max"
-              required
-              onChange={(e) => {
-                setFirstName(e.target.value)
-              }}
-              value={firstName}
-            />
-          </div>
+    //         <input
+    //           id="first-name"
+    //           placeholder="Max"
+    //           required
+    //           onChange={(e) => {
+    //             setFirstName(e.target.value)
+    //           }}
+    //           value={firstName}
+    //         />
+    //       </div>
 
-          <div className="grid gap-2">
-            <label htmlFor="last-name">Last name</label>
+    //       <div className="grid gap-2">
+    //         <label htmlFor="last-name">Last name</label>
 
-            <input
-              id="last-name"
-              placeholder="Robinson"
-              required
-              onChange={(e) => {
-                setLastName(e.target.value)
-              }}
-              value={lastName}
-            />
-          </div>
-        </div>
+    //         <input
+    //           id="last-name"
+    //           placeholder="Robinson"
+    //           required
+    //           onChange={(e) => {
+    //             setLastName(e.target.value)
+    //           }}
+    //           value={lastName}
+    //         />
+    //       </div>
+    //     </div>
 
-        <div className="grid gap-2">
-          <label htmlFor="email">Email</label>
+    //     <div className="grid gap-2">
+    //       <label htmlFor="email">Email</label>
 
-          <input
-            id="email"
-            type="email"
-            placeholder="m@example.com"
-            required
-            onChange={(e) => {
-              setEmail(e.target.value)
-            }}
-            value={email}
-          />
-        </div>
+    //       <input
+    //         id="email"
+    //         type="email"
+    //         placeholder="m@example.com"
+    //         required
+    //         onChange={(e) => {
+    //           setEmail(e.target.value)
+    //         }}
+    //         value={email}
+    //       />
+    //     </div>
 
-        <div className="grid gap-2">
-          <label htmlFor="password">Password</label>
+    //     <div className="grid gap-2">
+    //       <label htmlFor="password">Password</label>
 
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="new-password"
-            placeholder="Password"
-          />
-        </div>
+    //       <input
+    //         id="password"
+    //         type="password"
+    //         value={password}
+    //         onChange={(e) => setPassword(e.target.value)}
+    //         autoComplete="new-password"
+    //         placeholder="Password"
+    //       />
+    //     </div>
 
-        <div className="grid gap-2">
-          <label htmlFor="password">Confirm Password</label>
+    //     <div className="grid gap-2">
+    //       <label htmlFor="password">Confirm Password</label>
 
-          <input
-            id="password_confirmation"
-            type="password"
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-            autoComplete="new-password"
-            placeholder="Confirm Password"
-          />
-        </div>
+    //       <input
+    //         id="password_confirmation"
+    //         type="password"
+    //         value={passwordConfirmation}
+    //         onChange={(e) => setPasswordConfirmation(e.target.value)}
+    //         autoComplete="new-password"
+    //         placeholder="Confirm Password"
+    //       />
+    //     </div>
 
-        <div className="grid gap-2">
-          <label htmlFor="image">Profile Image (optional)</label>
+    //     <div className="grid gap-2">
+    //       <label htmlFor="image">Profile Image (optional)</label>
 
-          <div className="flex items-end gap-4">
-            {imagePreview && (
-              <div className="relative w-16 h-16 rounded-sm overflow-hidden">
-                <Image src={imagePreview} alt="Profile preview" layout="fill" objectFit="cover" />
-              </div>
-            )}
+    //       <div className="flex items-end gap-4">
+    //         {imagePreview && (
+    //           <div className="relative w-16 h-16 rounded-sm overflow-hidden">
+    //             <Image src={imagePreview} alt="Profile preview" layout="fill" objectFit="cover" />
+    //           </div>
+    //         )}
 
-            <div className="flex items-center gap-2 w-full">
-              <input
-                id="image"
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                className="w-full"
-              />
+    //         <div className="flex items-center gap-2 w-full">
+    //           <input
+    //             id="image"
+    //             type="file"
+    //             accept="image/*"
+    //             onChange={handleImageChange}
+    //             className="w-full"
+    //           />
 
-              {imagePreview && (
-                <span
-                  className="cursor-pointer"
-                  onClick={() => {
-                    setImage(null)
+    //           {imagePreview && (
+    //             <span
+    //               className="cursor-pointer"
+    //               onClick={() => {
+    //                 setImage(null)
 
-                    setImagePreview(null)
-                  }}
-                >
-                  remove
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-        <button type="button" onClick={googleSignIn}>
-          google login
-        </button>
-        <button
-          type="submit"
-          className="w-full"
-          disabled={loading}
-          onClick={async () => {
-            await authClient.signUp.email({
-              email,
+    //                 setImagePreview(null)
+    //               }}
+    //             >
+    //               remove
+    //             </span>
+    //           )}
+    //         </div>
+    //       </div>
+    //     </div>
+    //     <button type="button" onClick={googleSignIn}>
+    //       google login
+    //     </button>
+    //     <button
+    //       type="submit"
+    //       className="w-full"
+    //       disabled={loading}
+    //       onClick={async () => {
+    //         await authClient.signUp.email({
+    //           email,
 
-              password,
+    //           password,
 
-              name: `${firstName} ${lastName}`,
+    //           name: `${firstName} ${lastName}`,
 
-              image: image ? await convertImageToBase64(image) : '',
+    //           image: image ? await convertImageToBase64(image) : '',
 
-              callbackURL: '/dashboard',
+    //           callbackURL: '/dashboard',
 
-              fetchOptions: {
-                onResponse: () => {
-                  console.log('on response')
-                  setLoading(false)
-                },
+    //           fetchOptions: {
+    //             onResponse: () => {
+    //               console.log('on response')
+    //               setLoading(false)
+    //             },
 
-                onRequest: () => {
-                  console.log('on request')
-                  setLoading(true)
-                },
+    //             onRequest: () => {
+    //               console.log('on request')
+    //               setLoading(true)
+    //             },
 
-                onError: (ctx) => {
-                  console.log('on error')
-                  console.error(ctx.error.message)
-                },
+    //             onError: (ctx) => {
+    //               console.log('on error')
+    //               console.error(ctx.error.message)
+    //             },
 
-                onSuccess: async () => {
-                  console.log('on success')
-                  router.push('/dashboard')
-                },
-              },
-            })
-          }}
-        >
-          {loading ? 'loading' : 'Create an account'}
-        </button>
-      </div>
-    </div>
+    //             onSuccess: async () => {
+    //               console.log('on success')
+    //               router.push('/dashboard')
+    //             },
+    //           },
+    //         })
+    //       }}
+    //     >
+    //       {loading ? 'loading' : 'Create an account'}
+    //     </button>
+    //   </div>
+    // </div>
   )
 }
 

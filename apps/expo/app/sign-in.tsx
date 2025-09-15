@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { View, TextInput, Button, Alert } from 'react-native'
 import { authClient } from '../lib/auth/auth-client'
 // import { authClient } from "../lib/auth/auth-client";
+import { SignInRightImage } from 'app/features/auth/AuthLayoutWrapper'
 
 export default function SignIn() {
   const [email, setEmail] = useState('')

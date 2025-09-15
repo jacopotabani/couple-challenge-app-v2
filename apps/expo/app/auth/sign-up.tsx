@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { View, TextInput, Button, Alert } from 'react-native'
-import { authClient } from '../lib/auth/auth-client'
+import { authClient } from '../../lib/auth/auth-client'
+import { SignInRightImage } from 'app/features/auth/AuthLayoutWrapper'
 
 export default function SignUp() {
   const [email, setEmail] = useState('')
@@ -47,34 +48,35 @@ export default function SignUp() {
   }
 
   return (
-    <View style={{ padding: 20 }}>
-      <TextInput
-        placeholder="Name"
-        value={name}
-        onChangeText={setName}
-        style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
-      />
-      <TextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
-        secureTextEntry
-      />
-      <Button
-        title={loading ? 'Signing Up...' : 'Sign Up'}
-        onPress={handleSignUp}
-        disabled={loading}
-      />
-      <Button title={'Google login'} onPress={handleGoogleLogin} disabled={loading} />
-    </View>
+    <SignInRightImage />
+    // <View style={{ padding: 20 }}>
+    //   <TextInput
+    //     placeholder="Name"
+    //     value={name}
+    //     onChangeText={setName}
+    //     style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
+    //   />
+    //   <TextInput
+    //     placeholder="Email"
+    //     value={email}
+    //     onChangeText={setEmail}
+    //     style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
+    //     keyboardType="email-address"
+    //     autoCapitalize="none"
+    //   />
+    //   <TextInput
+    //     placeholder="Password"
+    //     value={password}
+    //     onChangeText={setPassword}
+    //     style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
+    //     secureTextEntry
+    //   />
+    //   <Button
+    //     title={loading ? 'Signing Up...' : 'Sign Up'}
+    //     onPress={handleSignUp}
+    //     disabled={loading}
+    //   />
+    //   <Button title={'Google login'} onPress={handleGoogleLogin} disabled={loading} />
+    // </View>
   )
 }

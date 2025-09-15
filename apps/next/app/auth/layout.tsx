@@ -1,5 +1,5 @@
-import { AuthLayout } from 'app/features/auth/layout.web'
+import { AuthLayoutWrapper } from 'app/features/auth/AuthLayoutWrapper'
 
-export default function AuthLayoutWrapper({ children }: { children: React.ReactNode }) {
-  return <AuthLayout>{children}</AuthLayout>
+export default function AuthLayout({ children }: { children: React.ReactNode }) {
+  return <AuthLayoutWrapper>{children}</AuthLayoutWrapper>
 }

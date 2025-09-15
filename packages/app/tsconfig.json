@@ -1,9 +1,10 @@
 {
   "extends": "../../tsconfig.base",
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "features", "provider", "utils", "index.ts", "types.d.ts", "../ui/src", "../auth/web"],
   "compilerOptions": {
     "composite": true,
     "jsx": "react-jsx",
+    "baseUrl": ".",
     "paths": {
       "app/*": ["./packages/app/*"],
       "@my/ui/*": ["./packages/ui/*"]

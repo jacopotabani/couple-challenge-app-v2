@@ -1,4 +1,4 @@
-import { AnimatePresence, Button, H1, isWeb, Label, Paragraph, Text, Spinner, View } from 'tamagui'
+import { AnimatePresence, Button, H1, isWeb, Label, Paragraph, Text, Spinner, View, ScrollView } from 'tamagui'
 import { useState } from 'react'
 import { Eye, EyeOff, Info } from '@tamagui/lucide-icons'
 import { FormCard } from './components/layoutParts'
@@ -16,6 +16,7 @@ import {
   Theme,
   YStack,
 } from '@my/ui'
+import { FormWrapper } from '@my/ui/src/components'
 
 const schema = z
   .object({
@@ -60,6 +61,8 @@ export function SignUpScreen() {
   }
 
   return (
+    <ScrollView>
+
     <FormCard
       flexDirection="column"
       gap="$5"
@@ -387,6 +390,7 @@ export function SignUpScreen() {
       <SignInLink />
       {!isWeb && <SafeAreaView />}
     </FormCard>
+    </ScrollView>
   )
 }
 

@@ -2783,7 +2783,7 @@ __metadata:
     "@my/config": "npm:0.0.1"
     "@tamagui/build": "npm:^1.132.18"
     "@tamagui/toast": "npm:^1.132.18"
-    "@ts-react/form": "npm:^1.8.3"
+    "@ts-react/form": "npm:1.6.4"
     tamagui: "npm:^1.132.18"
   languageName: unknown
   linkType: soft
@@ -5931,15 +5931,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ts-react/form@npm:^1.8.3":
-  version: 1.8.3
-  resolution: "@ts-react/form@npm:1.8.3"
+"@ts-react/form@npm:1.6.4":
+  version: 1.6.4
+  resolution: "@ts-react/form@npm:1.6.4"
   peerDependencies:
     "@hookform/resolvers": ^2.8.0 || ^3.0.0
     react: ^16.8.0 || ^17 || ^18
     react-hook-form: ^7.39.0
     zod: ^3.19.0
-  checksum: 10/7faf42ca0f778337064bed9f80012deae59f6a614cb7a8a8af2b35101bcdc2542468a911dae0835ecba09e5e09587b2758ce942e0d6eaffce0fb75ebee6af833
+  checksum: 10/4c8c79418903c65283fcf673d579dc572b4c00e5bb9cf001eb2f1a608d699a0c853dd49830ee4a56419836167dfa4634fd0b7f19cb9d22ad2a4434eecefd404b
   languageName: node
   linkType: hard
 

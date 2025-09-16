@@ -19,7 +19,7 @@
   "dependencies": {
     "@my/config": "0.0.1",
     "@tamagui/toast": "^1.132.18",
-    "@ts-react/form": "^1.8.3",
+    "@ts-react/form": "1.6.4",
     "tamagui": "^1.132.18"
   },
   "devDependencies": {

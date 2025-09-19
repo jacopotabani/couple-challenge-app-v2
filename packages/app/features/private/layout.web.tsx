@@ -3,25 +3,23 @@ import {
   Adapt,
   Avatar,
   Button,
-  type ButtonProps,
   Popover,
   Separator,
   SizableText,
   type StackProps,
-  Theme,
   XStack,
   YStack,
   getTokens,
 } from '@my/ui'
-import { Menu, Plus } from '@tamagui/lucide-icons'
+import { Menu } from '@tamagui/lucide-icons'
 import { useRouter as useAppRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { SolitoImage } from 'solito/image'
-import { Link, useLink } from 'solito/link'
+import { Link } from 'solito/link'
 
-import { NavTabs } from './nav-tabs.web'
+import { usePathname, useRouter } from 'solito/navigation'
 import { authClient } from '../../../auth/web/auth-client'
-import { usePathname } from 'solito/navigation'
+import { NavTabs } from './nav-tabs.web'
 
 export type PrivateLayoutProps = {
   children?: React.ReactNode
@@ -34,6 +32,7 @@ export const PrivateLayout = ({
   fullPage = false,
   padded = false,
 }: PrivateLayoutProps) => {
+  const router = useRouter()
   return (
     <YStack f={1}>
       <YStack
@@ -64,6 +63,20 @@ export const PrivateLayout = ({
             </MobileNavbar>
           </YStack>
           <XStack ai="center" gap="$4" py="$3">
+            <Button
+              size={'$2'}
+              onPress={() =>
+                authClient.signOut({
+                  fetchOptions: {
+                    onSuccess: () => {
+                      router.push('/auth/sign-in') // redirect to login page
+                    },
+                  },
+                })
+              }
+            >
+              Signout
+            </Button>
             {/* <CtaButton /> */}
             <ProfileButton />
           </XStack>

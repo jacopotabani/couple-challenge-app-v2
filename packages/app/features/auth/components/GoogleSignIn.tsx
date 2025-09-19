@@ -24,6 +24,7 @@ export function GoogleSignIn({ onGoogleSignIn }: { onGoogleSignIn?: () => void }
     try {
       const data = await authClient.signIn.social({
         provider: 'google',
+        callbackURL: '/private/dashboard',
       })
       console.log('data', data)
     } catch (error) {

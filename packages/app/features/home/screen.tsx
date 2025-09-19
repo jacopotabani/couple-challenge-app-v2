@@ -20,7 +20,7 @@ import { useLink } from 'solito/navigation'
 export function HomeScreen({ pagesMode = false }: { pagesMode?: boolean }) {
   const linkTarget = pagesMode ? '/pages-example-user' : '/user'
   const linkProps = useLink({
-    href: `${linkTarget}/nate`,
+    href: `/private/dashboard`,
   })
   const signUplinkTarget = '/auth/sign-up'
   const signUplinkProps = useLink({
@@ -61,7 +61,7 @@ export function HomeScreen({ pagesMode = false }: { pagesMode?: boolean }) {
       </YStack>
 
       {/* <Button onPress={handleGoogleLogin}>Google logi</Button> */}
-      <Button {...linkProps}>Link to user</Button>
+      <Button {...linkProps}>Link to dashboard</Button>
       <Button {...signUplinkProps}>Link to sign-up</Button>
 
       <SheetDemo />

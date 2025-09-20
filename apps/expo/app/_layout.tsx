@@ -9,7 +9,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 export const unstable_settings = {
   // Ensure that reloading on `/user` keeps a back button present.
-  initialRouteName: 'Home',
+  initialRouteName: 'SignIn',
 }
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -43,19 +43,19 @@ function RootLayoutNav() {
       <Provider>
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
           <Stack screenOptions={{ headerShown: false }}>
-            {/* <Stack.Screen
+            <Stack.Screen
               name="(drawer)/(tabs)/index"
               options={{
                 headerShown: false,
               }}
             />
-            <Stack.Screen
+            {/* <Stack.Screen
               name="create"
               options={{
                 headerShown: false,
               }}
-            />
-            <Stack.Screen
+            /> */}
+            {/* <Stack.Screen
               name="settings/index"
               options={{
                 headerShown: true,

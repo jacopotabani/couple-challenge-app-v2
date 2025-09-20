@@ -1,22 +1,15 @@
-import { AnimatePresence, Button, H1, isWeb, Label, Paragraph, Text, Spinner, View, ScrollView } from 'tamagui'
-import { useState } from 'react'
-import { Eye, EyeOff, Info } from '@tamagui/lucide-icons'
-import { FormCard } from './components/layoutParts'
-import { useForm, Controller, FormProvider } from 'react-hook-form'
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Eye, EyeOff, Info } from '@tamagui/lucide-icons'
+import { useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import { SafeAreaView } from 'react-native'
-import { Input } from './inputs/components/inputsParts'
-import { SocialLogin } from './components/SocialLogin'
-import { useLink } from 'solito/navigation'
 import { Link } from 'solito/link'
-import { SchemaForm, formFields } from 'app/utils/SchemaForm'
-import {
-  H2,
-  Theme,
-  YStack,
-} from '@my/ui'
-import { FormWrapper } from '@my/ui/src/components'
+import { useLink } from 'solito/navigation'
+import { AnimatePresence, Button, H1, isWeb, Paragraph, ScrollView, Spinner, Text, View } from 'tamagui'
+import { z } from 'zod'
+import { FormCard } from './components/layoutParts'
+import { SocialLogin } from './components/SocialLogin'
+import { Input } from './inputs/components/inputsParts'
 
 const schema = z
   .object({

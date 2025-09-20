@@ -8,6 +8,7 @@ import {
   isWeb,
 } from '@my/ui'
 import { ToastViewport } from './ToastViewport'
+import { AuthStateChangeHandler } from '../provider/auth/AuthStateChangeHandler'
 
 export function Provider({
   children,
@@ -18,10 +19,13 @@ export function Provider({
   const theme = defaultTheme || (colorScheme === 'dark' ? 'dark' : 'light')
 
   return (
+    
     <TamaguiProvider config={config} defaultTheme={theme} {...rest}>
       <ToastProvider swipeDirection="horizontal" duration={6000} native={isWeb ? [] : ['mobile']}>
+
         {children}
         <CustomToast />
+        <AuthStateChangeHandler />
         <ToastViewport />
       </ToastProvider>
     </TamaguiProvider>

@@ -13,7 +13,15 @@
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "@my/app": ["../../packages/app"],
+      "@my/app/*": ["../../packages/app/*"],
+      "@my/auth": ["../../packages/auth"],
+      "@my/auth/*": ["../../packages/auth/*"],
+      "@my/config": ["../../packages/config"],
+      "@my/config/*": ["../../packages/config/*"],
+      "@my/ui": ["../../packages/ui"],
+      "@my/ui/*": ["../../packages/ui/*"]
     }
   },
   "references": []

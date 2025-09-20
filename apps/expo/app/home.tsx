@@ -1,7 +1,8 @@
 import { Button } from '@my/ui'
-import { HomeScreen } from 'app/features/home/screen'
+// import { HomeScreen } from '@my/app/features/home/screen'
 import { Stack } from 'expo-router'
 import { authClient } from '../lib/auth/auth-client'
+import { HomeScreen } from '@my/app/features/home/screen'
 // import { authClient } from '../lib/auth/auth-client'
 
 export default function Screen() {

@@ -1,4 +1,4 @@
-import { UserDetailScreen } from 'app/features/user/detail-screen'
+import { UserDetailScreen } from '@my/app/features/user/detail-screen'
 import { Stack } from 'expo-router'
 import { useParams } from 'solito/navigation'
 

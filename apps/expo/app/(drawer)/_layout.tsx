@@ -1,4 +1,4 @@
-import { ProfileScreen } from 'app/features/profile/screen'
+import { ProfileScreen } from '@my/app/features/profile/screen'
 import { Drawer } from 'expo-router/drawer'
 
 export default function Layout() {

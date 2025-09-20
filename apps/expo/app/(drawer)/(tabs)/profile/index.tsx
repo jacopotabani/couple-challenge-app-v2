@@ -1,4 +1,4 @@
-import { DrawerMenu } from 'app/features/drawer-menu'
+import { DrawerMenu } from '@my/app/features/drawer-menu'
 import { Stack } from 'expo-router'
 
 export default function Screen() {

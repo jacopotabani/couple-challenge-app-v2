@@ -3,9 +3,10 @@ import { useColorScheme } from 'react-native'
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
-import { Provider } from 'app/provider'
+import { Provider } from '@my/app/provider'
 import { NativeToast } from '@my/ui/src/NativeToast'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { AuthStateChangeHandler } from '@my/app/provider/auth/AuthStateChangeHandler'
 
 export const unstable_settings = {
   // Ensure that reloading on `/user` keeps a back button present.
@@ -66,6 +67,7 @@ function RootLayoutNav() {
           </Stack>
           <NativeToast />
         </ThemeProvider>
+        <AuthStateChangeHandler />
       </Provider>
     </GestureHandlerRootView>
   )

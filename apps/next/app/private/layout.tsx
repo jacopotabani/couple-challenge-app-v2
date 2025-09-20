@@ -1,4 +1,4 @@
-import { PrivateLayout } from 'app/features/private/layout.web'
+import { PrivateLayout } from '@my/app/features/private/layout.web'
 import { auth } from 'lib/auth'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'

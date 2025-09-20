@@ -1,6 +1,6 @@
 'use client'
 
-import { SignInScreen } from 'app/features/auth/SignInScreen'
+import { SignInScreen } from '@my/app/features/auth/SignInScreen'
 import { Stack } from 'expo-router'
 
 export default function SignIn() {

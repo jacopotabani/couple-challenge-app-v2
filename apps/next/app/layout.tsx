@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { NextTamaguiProvider } from 'app/provider/NextTamaguiProvider'
+import { NextTamaguiProvider } from '@my/app/provider/NextTamaguiProvider'
 
 export const metadata: Metadata = {
   title: 'Tamagui • App Router',

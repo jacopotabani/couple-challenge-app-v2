@@ -44,6 +44,10 @@ module.exports = () => {
       'expo-linking',
       'expo-constants',
       'expo-modules-core',
+      '@my/app',
+      '@my/auth',
+      '@my/config',
+      '@my/ui',
     ],
     experimental: {
       scrollRestoration: true,

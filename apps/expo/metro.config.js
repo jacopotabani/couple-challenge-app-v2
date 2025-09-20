@@ -21,6 +21,14 @@ config.resolver.nodeModulesPaths = [
 // 3. Force Metro to resolve (sub)dependencies only from the `nodeModulesPaths`
 config.resolver.disableHierarchicalLookup = true
 
+// 4. Add alias resolution for @my/* imports
+config.resolver.alias = {
+  '@my/app': path.resolve(workspaceRoot, 'packages/app'),
+  '@my/auth': path.resolve(workspaceRoot, 'packages/auth'),
+  '@my/config': path.resolve(workspaceRoot, 'packages/config'),
+  '@my/ui': path.resolve(workspaceRoot, 'packages/ui'),
+}
+
 config.transformer = { ...config.transformer, unstable_allowRequireContext: true }
 config.transformer.minifierPath = require.resolve('metro-minify-terser')
 // config.resolver.unstable_enablePackageExports = true

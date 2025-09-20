@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { authClient } from 'lib/auth-client'
-import { SignInScreen } from 'app/features/auth/SignInScreen'
+import { SignInScreen } from '@my/app/features/auth/SignInScreen'
 
 export default function SignIn() {
   const [firstName, setFirstName] = useState('')

@@ -11,7 +11,7 @@ import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
 import { config } from '@my/ui'
 // import { Provider } from 'app/provider'
 import { StyleSheet } from 'react-native'
-import { Provider } from '../provider'
+import { Provider } from '@my/app/provider'
 
 export const NextTamaguiProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useRootTheme()

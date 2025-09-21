@@ -18,7 +18,7 @@ import { SolitoImage } from 'solito/image'
 import { Link } from 'solito/link'
 
 import { usePathname, useRouter } from 'solito/navigation'
-import { authClient } from '../../../auth/web/auth-client'
+import { authClient } from '@my/auth/web/auth-client'
 import { NavTabs } from './nav-tabs.web'
 
 export type PrivateLayoutProps = {

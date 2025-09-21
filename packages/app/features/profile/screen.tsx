@@ -2,10 +2,10 @@ import { Avatar, Paragraph, XStack, YStack, getTokens, useWindowDimensions } fro
 import { Settings } from '@my/ui/src/components/Settings'
 import { DrawerContentScrollView } from '@react-navigation/drawer'
 import { Box, Cog, Milestone, ShoppingCart, User, Users } from '@tamagui/lucide-icons'
-import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
+import { useSafeAreaInsets } from '@my/app/utils/useSafeAreaInsets'
 import { SolitoImage } from 'solito/image'
 import { useLink } from 'solito/link'
-import { authClient } from '../../../auth/web/auth-client'
+import { authClient } from '@my/auth/web/auth-client'
 
 export function ProfileScreen(props) {
   const { data } = authClient.useSession()

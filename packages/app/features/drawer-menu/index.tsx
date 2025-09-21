@@ -2,14 +2,15 @@ import { Avatar, Paragraph, XStack, YStack, getTokens, useWindowDimensions } fro
 import { Settings } from '@my/ui/src/components/Settings'
 import { DrawerContentScrollView } from '@react-navigation/drawer'
 import { Box, Cog, Milestone, ShoppingCart, User, Users } from '@tamagui/lucide-icons'
-import { useSafeAreaInsets } from 'app/utils/useSafeAreaInsets'
 import { SolitoImage } from 'solito/image'
 import { useLink } from 'solito/link'
-import { authClient } from '../../../auth/web/auth-client'
+import { useUser } from '@my/app/utils/useUser'
+import { useSafeAreaInsets } from '@my/app/utils/useSafeAreaInsets.native'
 
 export function DrawerMenu(props) {
-  const { data } = authClient.useSession()
-  const name = data?.user?.name
+  // const { data } = authClient.useSession()
+  const { user } = useUser()
+  const name = user?.name
   const insets = useSafeAreaInsets()
   const height = useWindowDimensions().height
 
@@ -53,7 +54,7 @@ export function DrawerMenu(props) {
           <Avatar circular size="$3">
             {/* @ts-ignore */}
             <SolitoImage
-              src={data?.user?.image as unknown as string}
+              src={user?.image as unknown as string}
               alt="your avatar"
               width={getTokens().size['3'].val}
               height={getTokens().size['3'].val}

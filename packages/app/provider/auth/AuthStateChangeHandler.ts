@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useRouter } from 'solito/router'
-import { authClient } from '../../../auth/web/auth-client'
+import { authClient } from '@my/auth/web/auth-client'
 
 const useRedirectAfterSignOut = () => {
   const { data } = authClient.useSession()

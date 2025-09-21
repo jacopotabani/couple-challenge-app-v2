@@ -7,7 +7,9 @@
     "baseUrl": ".",
     "paths": {
       "app/*": ["./packages/app/*"],
-      "@my/ui/*": ["./packages/ui/*"]
+      "@my/ui/*": ["./packages/ui/*"],
+      "@my/auth/*": ["./packages/auth/*"],
+      "@my/config/*": ["./packages/config/*"]
     }
   },
   "references": []

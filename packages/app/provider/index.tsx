@@ -8,7 +8,7 @@ import {
   isWeb,
 } from '@my/ui'
 import { ToastViewport } from './ToastViewport'
-import { AuthStateChangeHandler } from '../provider/auth/AuthStateChangeHandler'
+import { AuthStateChangeHandler } from '@my/app/provider/auth/AuthStateChangeHandler'
 
 export function Provider({
   children,

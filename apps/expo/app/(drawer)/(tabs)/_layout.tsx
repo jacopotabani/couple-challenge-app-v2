@@ -1,6 +1,6 @@
 import { useTheme, Button } from '@my/ui'
 import { DrawerActions } from '@react-navigation/native'
-import { Home, Menu, Plus, User } from '@tamagui/lucide-icons'
+import { Home, LayoutDashboard, Menu, Plus, User, User2 } from '@tamagui/lucide-icons'
 // import { IconGearFill, IconGear, IconHouse, IconHouseFill } from '@tamagui-icons/icon-ph'
 import { router, Stack, Tabs, useNavigation, usePathname } from 'expo-router'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -19,7 +19,7 @@ export default function Layout() {
       <Stack.Screen
         options={{
           title: 'Home',
-          headerShown: pathname === '/' || pathname === '/create',
+          headerShown: pathname === '/',
           headerTintColor: accentColor.val,
           headerLeft: () => (
             <Button
@@ -50,6 +50,48 @@ export default function Layout() {
           // ),
         }}
       />
+      {/* <Stack.Screen
+        options={{
+          title: 'Profile',
+          headerShown: false,
+          headerTintColor: accentColor.val,
+          headerLeft: () => (
+            <Button
+              borderStyle="unset"
+              borderWidth={0}
+              backgroundColor="transparent"
+              marginLeft="$-1"
+              paddingHorizontal="$4"
+              onPress={() => {
+                navigation.dispatch(DrawerActions.openDrawer())
+              }}
+            >
+              <Menu size={24} />
+            </Button>
+          ),
+        }}
+      />
+      <Stack.Screen
+        options={{
+          title: 'dashboard',
+          headerShown: false,
+          headerTintColor: accentColor.val,
+          headerLeft: () => (
+            <Button
+              borderStyle="unset"
+              borderWidth={0}
+              backgroundColor="transparent"
+              marginLeft="$-1"
+              paddingHorizontal="$4"
+              onPress={() => {
+                navigation.dispatch(DrawerActions.openDrawer())
+              }}
+            >
+              <Menu size={24} />
+            </Button>
+          ),
+        }}
+      /> */}
       <Tabs
         screenOptions={{
           tabBarShowLabel: false,
@@ -78,14 +120,29 @@ export default function Layout() {
           }}
         />
         <Tabs.Screen
-          name="profile"
+          name="profile/index"
           key="profile"
           options={{
             headerShown: false,
             title: 'Profile',
             tabBarLabel: 'Profile',
             tabBarIcon: ({ size, color, focused }) => (
-              <User color={focused ? '$color12' : '$color10'} size={size} strokeWidth={2} />
+              <User2 color={focused ? '$color12' : '$color10'} size={size} strokeWidth={2} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="dashboard/index"
+          key="dashboard"
+          options={{
+            title: 'Dashboard',
+            headerShown: true,
+            tabBarIcon: ({ size, color, focused }) => (
+              <LayoutDashboard
+                color={focused ? '$color12' : '$color10'}
+                size={size}
+                strokeWidth={2}
+              />
             ),
           }}
         />

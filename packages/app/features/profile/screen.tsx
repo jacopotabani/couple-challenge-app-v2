@@ -21,8 +21,8 @@ export function ProfileScreen(props) {
         w="100%"
         f={1}
         h={height - insets.bottom - insets.top}
-        py="$4"
-        pb="$2"
+        // py="$4"
+        // pb="$2"
       >
         <Settings>
           <Settings.Items>

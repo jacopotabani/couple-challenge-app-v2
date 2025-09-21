@@ -4,10 +4,10 @@ import { GoogleSignIn } from '@my/app/features/auth/components/GoogleSignIn'
 import { SignInScreen } from '@my/app/features/auth/SignInScreen'
 import { Button } from '@my/ui'
 import { Stack } from 'expo-router'
-import { authClient } from '../../OLD_lib/auth/auth-client'
 import { IconGoogle } from '@my/app/features/auth/components/IconGoogle'
 import { useEffect } from 'react'
 import { useRouter } from 'solito/router'
+import { authClient } from '@my/auth/client/auth-client'
 
 export default function SignIn() {
   const { data } = authClient.useSession()

@@ -1,19 +1,20 @@
 'use client'
-import { ProfileScreen } from '@my/app/features/profile/screen'
+import { DashboardScreen } from '@my/app/features/dashboard/screen'
 import { Button, useTheme } from '@my/ui'
 import { DrawerActions } from '@react-navigation/native'
-import { Stack, useNavigation } from 'expo-router'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { Menu } from '@tamagui/lucide-icons'
+import { Stack, useNavigation, usePathname } from 'expo-router'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
-const Profile = () => {
+const Dashboard = () => {
   const { accentColor } = useTheme()
   const navigation = useNavigation()
+  const pathname = usePathname()
   return (
     <>
       <Stack.Screen
         options={{
-          title: 'Profile',
+          title: 'Dashboard',
           headerShown: true,
           headerTintColor: accentColor.val,
           headerLeft: () => (
@@ -33,10 +34,10 @@ const Profile = () => {
         }}
       />
       <SafeAreaView style={{ flex: 1 }} edges={['bottom', 'left', 'right']}>
-        <ProfileScreen />
+        <DashboardScreen />
       </SafeAreaView>
     </>
   )
 }
 
-export default Profile
+export default Dashboard

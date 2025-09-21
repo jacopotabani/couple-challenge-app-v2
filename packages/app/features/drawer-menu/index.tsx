@@ -9,8 +9,8 @@ import { useSafeAreaInsets } from '@my/app/utils/useSafeAreaInsets.native'
 
 export function DrawerMenu(props) {
   // const { data } = authClient.useSession()
-  const { user } = useUser()
-  const name = user?.name
+  // const { user } = useUser()
+  // const name = user?.name
   const insets = useSafeAreaInsets()
   const height = useWindowDimensions().height
 
@@ -29,9 +29,9 @@ export function DrawerMenu(props) {
           <Settings.Items>
             <Settings.Group>
               <Settings.Item icon={User} {...useLink({ href: '/profile/edit' })} accentTheme="pink">
-                Edit profile
+                Drawer menu
               </Settings.Item>
-              <Settings.Item icon={Box} accentTheme="green">
+              {/* <Settings.Item icon={Box} accentTheme="green">
                 My Items
               </Settings.Item>
               <Settings.Item icon={Users} accentTheme="orange">
@@ -45,7 +45,7 @@ export function DrawerMenu(props) {
               </Settings.Item>
               <Settings.Item {...useLink({ href: '/settings' })} icon={Cog}>
                 Settings
-              </Settings.Item>
+              </Settings.Item> */}
             </Settings.Group>
           </Settings.Items>
         </Settings>
@@ -53,16 +53,16 @@ export function DrawerMenu(props) {
         <XStack gap="$4" mb="$7" mt="auto" ai="center" px="$4">
           <Avatar circular size="$3">
             {/* @ts-ignore */}
-            <SolitoImage
+            {/* <SolitoImage
               src={user?.image as unknown as string}
               alt="your avatar"
               width={getTokens().size['3'].val}
               height={getTokens().size['3'].val}
-            />
+            /> */}
           </Avatar>
-          <Paragraph ta="center" ml="$-1.5">
+          {/* <Paragraph ta="center" ml="$-1.5">
             {name ?? 'No Name'}
-          </Paragraph>
+          </Paragraph> */}
         </XStack>
       </YStack>
     </DrawerContentScrollView>

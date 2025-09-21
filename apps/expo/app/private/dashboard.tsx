@@ -1,10 +1,15 @@
 'use client'
-import { HomeScreen } from '@my/app/features/home/screen'
 import { Text, View } from '@my/ui'
-import React from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const Dashboard = () => {
-  return <HomeScreen />
+  return (
+    <SafeAreaView style={{ flex: 1 }} edges={['bottom', 'left', 'right', 'top']}>
+      <View>
+        <Text>Dashboard</Text>
+      </View>
+    </SafeAreaView>
+  )
 }
 
 export default Dashboard

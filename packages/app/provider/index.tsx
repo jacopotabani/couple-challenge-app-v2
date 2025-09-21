@@ -8,6 +8,8 @@ import {
 } from '@my/ui'
 import { useColorScheme } from 'react-native'
 import { ToastViewport } from './ToastViewport'
+import { SafeAreaProvider } from './safe-area'
+import { UniversalThemeProvider } from './theme'
 
 export function Provider({
   children,
@@ -19,12 +21,15 @@ export function Provider({
 
   return (
     <TamaguiProvider config={config} defaultTheme={theme} {...rest}>
-      <ToastProvider swipeDirection="horizontal" duration={6000} native={isWeb ? [] : ['mobile']}>
-        {children}
-        <CustomToast />
+      <SafeAreaProvider>
+        <ToastProvider swipeDirection="horizontal" duration={6000} native={isWeb ? [] : ['mobile']}>
+          {children}
+          <CustomToast />
 
-        <ToastViewport />
-      </ToastProvider>
+          <ToastViewport />
+        </ToastProvider>
+      </SafeAreaProvider>
     </TamaguiProvider>
+    // <Providers>{children}</Providers>
   )
 }

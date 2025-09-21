@@ -10,7 +10,7 @@ import { AuthStateChangeHandler } from '@my/app/provider/auth/AuthStateChangeHan
 
 export const unstable_settings = {
   // Ensure that reloading on `/user` keeps a back button present.
-  initialRouteName: 'SignIn',
+  initialRouteName: 'index',
 }
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -44,26 +44,38 @@ function RootLayoutNav() {
       <Provider>
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
           <Stack screenOptions={{ headerShown: false }}>
+            {/* Landing/Home Page */}
             <Stack.Screen
-              name="(drawer)/(tabs)/index"
+              name="index"
               options={{
                 headerShown: false,
               }}
             />
-            {/* <Stack.Screen
-              name="create"
+
+            {/* Auth Stack - Public Routes */}
+            <Stack.Screen
+              name="auth"
+              options={{
+                headerShown: false,
+                presentation: 'modal', // Optional: makes auth feel like a modal
+              }}
+            />
+
+            {/* Private Stack - Protected Routes */}
+            <Stack.Screen
+              name="private"
               options={{
                 headerShown: false,
               }}
-            /> */}
-            {/* <Stack.Screen
-              name="settings/index"
+            />
+
+            {/* Legacy drawer route - can be removed after migration */}
+            <Stack.Screen
+              name="(drawer)"
               options={{
-                headerShown: true,
-                headerBackTitle: 'Back',
+                headerShown: false,
               }}
-            /> */}
-            <Stack />
+            />
           </Stack>
           <NativeToast />
         </ThemeProvider>

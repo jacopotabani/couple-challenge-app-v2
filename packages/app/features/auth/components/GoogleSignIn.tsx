@@ -2,7 +2,8 @@ import { Button } from '@my/ui'
 // import { useSupabase } from 'app/utils/supabase/useSupabase'
 
 import { IconGoogle } from './IconGoogle'
-import { authClient } from '@my/auth/web/auth-client'
+import { authClient } from '@my/auth/client/auth-client'
+// import { authClient } from '@my/auth/web/auth-client'
 
 export function GoogleSignIn({ onGoogleSignIn }: { onGoogleSignIn?: () => void }) {
   // const supabase = useSupabase()
@@ -24,7 +25,7 @@ export function GoogleSignIn({ onGoogleSignIn }: { onGoogleSignIn?: () => void }
     try {
       const data = await authClient.signIn.social({
         provider: 'google',
-        // callbackURL: '/private/dashboard',
+        callbackURL: '/private/dashboard',
       })
       console.log('data 123', data)
     } catch (error) {

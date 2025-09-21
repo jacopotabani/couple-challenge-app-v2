@@ -12,13 +12,12 @@ import {
   getTokens,
 } from '@my/ui'
 import { Menu } from '@tamagui/lucide-icons'
-import { useRouter as useAppRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { SolitoImage } from 'solito/image'
 import { Link } from 'solito/link'
 
+import { authClient } from '@my/auth/client/auth-client'
 import { usePathname, useRouter } from 'solito/navigation'
-import { authClient } from '@my/auth/web/auth-client'
 import { NavTabs } from './nav-tabs.web'
 
 export type PrivateLayoutProps = {
@@ -116,7 +115,6 @@ const UserAvatar = () => {
 
 export const MobileNavbar = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = useState(false)
-  const router = useAppRouter()
   const pathname = usePathname()
 
   // close menu on navigation

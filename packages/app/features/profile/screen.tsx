@@ -5,7 +5,7 @@ import { Box, Cog, Milestone, ShoppingCart, User, Users } from '@tamagui/lucide-
 import { useSafeAreaInsets } from '@my/app/utils/useSafeAreaInsets'
 import { SolitoImage } from 'solito/image'
 import { useLink } from 'solito/link'
-import { authClient } from '@my/auth/web/auth-client'
+import { authClient } from '@my/auth/client/auth-client'
 
 export function ProfileScreen(props) {
   const { data } = authClient.useSession()

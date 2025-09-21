@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.base",
-  "include": ["**/*.ts", "**/*.tsx", "features", "provider", "utils", "index.ts", "types.d.ts", "../ui/src", "../auth/web"],
+  "include": ["**/*.ts", "**/*.tsx", "features", "provider", "utils", "index.ts", "types.d.ts", "../ui/src", "../auth/client"],
   "compilerOptions": {
     "composite": true,
     "jsx": "react-jsx",

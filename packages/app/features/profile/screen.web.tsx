@@ -10,7 +10,7 @@ import {
 } from '@tamagui/lucide-icons'
 import { SolitoImage } from 'solito/image'
 import { useLink } from 'solito/link'
-import { authClient } from '@my/auth/web/auth-client'
+import { authClient } from '@my/auth/client/auth-client'
 import { Settings } from '@my/ui/src/components/Settings'
 
 export function ProfileScreen(props) {

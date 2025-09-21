@@ -1,7 +1,7 @@
 import { Button } from '@my/ui'
 // import { HomeScreen } from '@my/app/features/home/screen'
 import { Stack } from 'expo-router'
-import { authClient } from '../lib/auth/auth-client'
+import { authClient } from '../OLD_lib/auth/auth-client'
 import { HomeScreen } from '@my/app/features/home/screen'
 // import { authClient } from '../lib/auth/auth-client'
 

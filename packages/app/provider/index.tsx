@@ -1,4 +1,3 @@
-import { useColorScheme } from 'react-native'
 import {
   CustomToast,
   TamaguiProvider,
@@ -7,8 +6,8 @@ import {
   config,
   isWeb,
 } from '@my/ui'
+import { useColorScheme } from 'react-native'
 import { ToastViewport } from './ToastViewport'
-import { AuthStateChangeHandler } from '@my/app/provider/auth/AuthStateChangeHandler'
 
 export function Provider({
   children,

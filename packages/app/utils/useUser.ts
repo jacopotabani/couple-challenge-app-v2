@@ -1,5 +1,5 @@
 import { createAuthClient } from '@my/auth/better-auth-client'
-import { authClient } from '@my/auth/web/auth-client'
+import { authClient } from '@my/auth/client/auth-client'
 
 export const useUser = () => {
   const { useSession } = createAuthClient()

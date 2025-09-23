@@ -3,7 +3,7 @@ import { Settings } from '@my/ui/src/components/Settings'
 import { DrawerContentScrollView } from '@react-navigation/drawer'
 import { Box, Cog, Milestone, ShoppingCart, User, Users } from '@tamagui/lucide-icons'
 import { SolitoImage } from 'solito/image'
-import { useLink } from 'solito/link'
+import { useLink } from 'solito/navigation'
 import { useUser } from '@my/app/utils/useUser'
 import { useSafeAreaInsets } from '@my/app/utils/useSafeAreaInsets.native'
 

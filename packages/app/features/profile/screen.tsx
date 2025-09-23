@@ -1,4 +1,5 @@
-import { Avatar, Paragraph, XStack, YStack, getTokens } from '@my/ui'
+'use client'
+import { Avatar, Button, Paragraph, XStack, YStack, getTokens } from '@my/ui'
 import {
   Box,
   Cog,
@@ -9,13 +10,14 @@ import {
   Users,
 } from '@tamagui/lucide-icons'
 import { SolitoImage } from 'solito/image'
-import { useLink } from 'solito/link'
+import { useLink, useRouter } from 'solito/navigation'
 import { authClient } from '@my/auth/client/auth-client'
 import { Settings } from '@my/ui/src/components/Settings'
 
 export function ProfileScreen(props) {
   const { data } = authClient.useSession()
   const name = data?.user?.name
+  const router = useRouter()
 
   return (
     <YStack maw={600} mx="auto" w="100%" f={1} mih="100%" py="$4" pb="$2">
@@ -43,7 +45,20 @@ export function ProfileScreen(props) {
           </Settings.Group>
         </Settings.Items>
       </Settings>
-
+      <Button
+        size={'$2'}
+        onPress={() =>
+          authClient.signOut({
+            fetchOptions: {
+              onSuccess: () => {
+                router.push('/auth/sign-in') // redirect to login page
+              },
+            },
+          })
+        }
+      >
+        Signout
+      </Button>
       <XStack gap="$4" mb="$7" mt="auto" ai="center" px="$4">
         <Avatar circular size="$3">
           {/* @ts-ignore */}

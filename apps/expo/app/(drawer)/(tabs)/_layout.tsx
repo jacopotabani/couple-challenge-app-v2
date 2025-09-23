@@ -16,40 +16,6 @@ export default function Layout() {
   }
   return (
     <>
-      <Stack.Screen
-        options={{
-          title: 'Home',
-          headerShown: pathname === '/',
-          headerTintColor: accentColor.val,
-          headerLeft: () => (
-            <Button
-              borderStyle="unset"
-              borderWidth={0}
-              backgroundColor="transparent"
-              marginLeft="$-1"
-              paddingHorizontal="$4"
-              onPress={() => {
-                navigation.dispatch(DrawerActions.openDrawer())
-              }}
-            >
-              <Menu size={24} />
-            </Button>
-          ),
-          // headerRight: () => (
-          //   <Button
-          //     borderStyle="unset"
-          //     borderWidth={0}
-          //     marginRight="$-1"
-          //     backgroundColor="transparent"
-          //     onPress={() => {
-          //       router.navigate('create')
-          //     }}
-          //   >
-          //     <Plus size={24} />
-          //   </Button>
-          // ),
-        }}
-      />
       {/* <Stack.Screen
         options={{
           title: 'Profile',
@@ -94,6 +60,7 @@ export default function Layout() {
       /> */}
       <Tabs
         screenOptions={{
+          headerShown: false,
           tabBarShowLabel: false,
           headerTintColor: accentColor.val,
           tabBarStyle: {

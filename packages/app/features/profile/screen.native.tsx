@@ -1,29 +1,33 @@
+'use client'
+import { authClient } from '@my/auth/client/auth-client'
 import { Avatar, Paragraph, XStack, YStack, getTokens } from '@my/ui'
-import {
-  Box,
-  Cog,
-  Milestone,
-  MoreHorizontal,
-  ShoppingCart,
-  User,
-  Users,
-} from '@tamagui/lucide-icons'
+import { Settings } from '@my/ui/src/components/Settings'
+import { Box, Cog, Milestone, ShoppingCart, User, Users } from '@tamagui/lucide-icons'
 import { SolitoImage } from 'solito/image'
 import { useLink } from 'solito/link'
-import { authClient } from '@my/auth/client/auth-client'
-import { Settings } from '@my/ui/src/components/Settings'
 
 export function ProfileScreen(props) {
   const { data } = authClient.useSession()
   const name = data?.user?.name
+  // const insets = useSafeAreaInsets()
+  // const height = useWindowDimensions().height
 
   return (
-    <YStack maw={600} mx="auto" w="100%" f={1} mih="100%" py="$4" pb="$2">
+    // <DrawerContentScrollView {...props} f={1}>
+    <YStack
+      maw={600}
+      mx="auto"
+      w="100%"
+      f={1}
+      // h={height - insets.bottom - insets.top}
+      // py="$4"
+      // pb="$2"
+    >
       <Settings>
         <Settings.Items>
           <Settings.Group>
             <Settings.Item icon={User} {...useLink({ href: '/profile/edit' })} accentTheme="pink">
-              Edit profile
+              Native Edit profile
             </Settings.Item>
             <Settings.Item icon={Box} accentTheme="green">
               My Items
@@ -57,8 +61,8 @@ export function ProfileScreen(props) {
         <Paragraph ta="center" ml="$-1.5">
           {name ?? 'No Name'}
         </Paragraph>
-        <MoreHorizontal marginLeft="auto" size={24} color="$gray9" />
       </XStack>
     </YStack>
+    // </DrawerContentScrollView>
   )
 }

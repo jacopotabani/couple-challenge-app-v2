@@ -1,15 +1,18 @@
-import { PrivateLayout } from '@my/app/features/private/layout.web'
-import { ProfileScreen } from '@my/app/features/profile/screen'
+import { DrawerMenu } from '@my/app/features/drawer-menu'
 import { authClient } from '@my/auth/client/auth-client'
-import { Text, View } from '@my/ui'
-import { useRouter } from 'expo-router'
-import Drawer from 'expo-router/drawer'
+import { Button, Text, useTheme, View } from '@my/ui'
+import { DrawerActions } from '@react-navigation/native'
+import { Stack, useNavigation, useRouter } from 'expo-router'
+import { Drawer } from 'expo-router/drawer'
 import { useEffect } from 'react'
-// import { authClient } from 'lib/auth-client'
+import { Home, LayoutDashboard, Menu, Plus, User, User2 } from '@tamagui/lucide-icons'
 
-export default function PrivateLayoutWrapper({ children }: { children: React.ReactNode }) {
+export default function Layout() {
   const { data, isPending } = authClient.useSession()
   const router = useRouter()
+  const navigation = useNavigation()
+
+  const { accentColor } = useTheme()
 
   useEffect(() => {
     if (!isPending && !data?.session) {
@@ -26,22 +29,31 @@ export default function PrivateLayoutWrapper({ children }: { children: React.Rea
       </View>
     )
   }
-
-  // Not authenticated, don't render anything (redirect is happening)
-  if (!data?.session) {
-    return null
-  }
-
-  // return <PrivateLayout>{children}</PrivateLayout>
   return (
-    <Drawer
-      drawerContent={ProfileScreen}
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Drawer.Screen name="dashboard" />
-      <Drawer.Screen name="profile" />
-    </Drawer>
+    <>
+      {/* <Stack.Screen
+        options={{
+          title: 'Drawer',
+          headerShown: true,
+          // headerShown: pathname == '/private/(tabs)/index' ? true : false,
+          headerTintColor: accentColor.val,
+          headerLeft: () => (
+            <Button
+              borderStyle="unset"
+              borderWidth={0}
+              backgroundColor="transparent"
+              marginLeft="$-1"
+              paddingHorizontal="$4"
+              onPress={() => {
+                navigation.dispatch(DrawerActions.openDrawer())
+              }}
+            >
+              <Menu size={24} />
+            </Button>
+          ),
+        }}
+      /> */}
+      <Drawer drawerContent={DrawerMenu} />
+    </>
   )
 }

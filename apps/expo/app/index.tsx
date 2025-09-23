@@ -14,10 +14,11 @@ export default function Index() {
     if (!isPending) {
       if (data?.session) {
         // User is authenticated, go to private area
-        router.replace('/(drawer)/(tabs)/dashboard')
+        router.replace('/private/dashboard')
       } else {
         // User is not authenticated, go to auth
         router.replace('/auth/sign-in')
+        // router.replace('/private/dashboard')
       }
     }
   }, [data, isPending, router])

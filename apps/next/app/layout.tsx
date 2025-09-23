@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import { NextTamaguiProvider } from '@my/app/provider/NextTamaguiProvider'
+import { auth } from 'lib/auth'
+import { headers } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = {
   title: 'Tamagui • App Router',

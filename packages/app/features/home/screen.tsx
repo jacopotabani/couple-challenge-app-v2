@@ -1,3 +1,4 @@
+'use client'
 import {
   Anchor,
   Button,
@@ -29,7 +30,7 @@ export function HomeScreen({ pagesMode = false }: { pagesMode?: boolean }) {
 
   return (
     <YStack flex={1} jc="center" ai="center" gap="$8" p="$4" bg="$background">
-      <XStack
+      {/* <XStack
         position="absolute"
         width="100%"
         t="$6"
@@ -44,11 +45,11 @@ export function HomeScreen({ pagesMode = false }: { pagesMode?: boolean }) {
             <SwitchThemeButton />
           </>
         )}
-      </XStack>
+      </XStack> */}
 
       <YStack gap="$4">
         <H1 ta="center" color="$color12">
-          Welcome to Tamagui.
+          Home screen
         </H1>
         <Paragraph color="$color10" ta="center">
           Here's a basic starter to show navigating from one screen to another.

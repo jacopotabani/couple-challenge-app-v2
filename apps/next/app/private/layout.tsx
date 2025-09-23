@@ -17,8 +17,5 @@ export default async function PrivateLayoutWrapper({ children }: { children: Rea
     throw redirect('/auth/sign-in')
   })
 
-  console.log('SESSION', session)
-  console.log('ACTIVE SESSIONS', activeSessions)
-
   return <PrivateLayout>{children}</PrivateLayout>
 }

@@ -58,6 +58,27 @@ export default function Layout() {
           ),
         }}
       /> */}
+      <Stack.Screen
+        options={{
+          title: 'Tabs',
+          headerShown: pathname == '/private/(tabs)/index' ? true : false,
+          headerTintColor: accentColor.val,
+          headerLeft: () => (
+            <Button
+              borderStyle="unset"
+              borderWidth={0}
+              backgroundColor="transparent"
+              marginLeft="$-1"
+              paddingHorizontal="$4"
+              onPress={() => {
+                navigation.dispatch(DrawerActions.openDrawer())
+              }}
+            >
+              <Menu size={24} />
+            </Button>
+          ),
+        }}
+      />
       <Tabs
         screenOptions={{
           headerShown: false,

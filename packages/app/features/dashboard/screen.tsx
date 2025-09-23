@@ -12,7 +12,7 @@ import {
   YStack,
 } from '@my/ui'
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
-import { useState } from 'react'
+import { use, useState } from 'react'
 import { Platform } from 'react-native'
 import { useLink } from 'solito/navigation'
 // import { authClient } from '../lib/auth/auth-client'
@@ -26,9 +26,13 @@ export function DashboardScreen({ pagesMode = false }: { pagesMode?: boolean }) 
     href: `${signUplinkTarget}/`,
   })
 
+  const privateHomeScreen = useLink({
+    href: `/private/`,
+  })
+
   return (
     <YStack flex={1} jc="center" ai="center" gap="$8" p="$4" bg="$background">
-      <XStack
+      {/* <XStack
         position="absolute"
         width="100%"
         t="$6"
@@ -43,7 +47,7 @@ export function DashboardScreen({ pagesMode = false }: { pagesMode?: boolean }) 
             <SwitchThemeButton />
           </>
         )}
-      </XStack>
+      </XStack> */}
 
       <YStack gap="$4">
         <H1 ta="center" color="$color12">
@@ -52,8 +56,8 @@ export function DashboardScreen({ pagesMode = false }: { pagesMode?: boolean }) 
       </YStack>
 
       {/* <Button onPress={handleGoogleLogin}>Google logi</Button> */}
-      {/* <Button {...linkProps}>Link to dashboard</Button>
-      <Button {...signUplinkProps}>Link to sign-up</Button> */}
+      <Button {...privateHomeScreen}>Link to Private home screen</Button>
+      {/* <Button {...signUplinkProps}>Link to sign-up</Button> */}
 
       <SheetDemo />
     </YStack>

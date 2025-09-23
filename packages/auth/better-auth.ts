@@ -27,6 +27,7 @@ export const createAuth = (databaseUrl: string) => {
       'http://localhost:3000',
       'http://192.168.1.169:3000',
       'http://192.168.178.146:3000',
+      'http://192.168.2.12:3000',
     ],
   })
 }

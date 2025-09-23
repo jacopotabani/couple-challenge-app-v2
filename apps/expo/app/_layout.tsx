@@ -70,12 +70,12 @@ function RootLayoutNav() {
             />
 
             {/* Legacy drawer route - can be removed after migration */}
-            <Stack.Screen
+            {/* <Stack.Screen
               name="(drawer)"
               options={{
                 headerShown: false,
               }}
-            />
+            /> */}
           </Stack>
           <NativeToast />
         </ThemeProvider>

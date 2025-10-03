@@ -29,6 +29,9 @@ export function DashboardScreen({ pagesMode = false }: { pagesMode?: boolean }) 
   const privateHomeScreen = useLink({
     href: `/private/`,
   })
+  const coupleScreen = useLink({
+    href: `/private/couples/create`,
+  })
 
   return (
     <YStack flex={1} jc="center" ai="center" gap="$8" p="$4" bg="$background">
@@ -57,6 +60,7 @@ export function DashboardScreen({ pagesMode = false }: { pagesMode?: boolean }) 
 
       {/* <Button onPress={handleGoogleLogin}>Google logi</Button> */}
       <Button {...privateHomeScreen}>Link to Private home screen</Button>
+      <Button {...coupleScreen}>Link to couples screen</Button>
       {/* <Button {...signUplinkProps}>Link to sign-up</Button> */}
 
       <SheetDemo />

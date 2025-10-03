@@ -22,6 +22,7 @@ import { z } from 'zod'
 import { Input } from '../auth/inputs/components/inputsParts'
 import ScrollToTopTabBarContainer from '../../utils/NativeScreenContainer'
 import { useRouter } from 'solito/navigation'
+import { createCouple } from '../../utils/actions/couples'
 
 const CoupleSchema = z.object({
   name: z.string().min(1, { message: 'Couple name is required' }),
@@ -74,20 +75,28 @@ const CreateCoupleForm = ({ userId }: { userId: string }) => {
     setLoading(true)
     console.log('data', data)
     try {
+      const result = await createCouple(data)
+      if (result.id) {
+        // Handle success
+        router.push(`/couples/${result.id}`)
+      } else {
+        // Handle error
+        console.error('error creating couples')
+      }
       // Placeholder promise - simulate API call
-      await new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({
-            id: Math.random().toString(36).substr(2, 9),
-            name: data.name.trim(),
-            couple_code: generateCoupleCode(),
-          })
-        }, 2000)
-      })
+      // await new Promise((resolve) => {
+      //   setTimeout(() => {
+      //     resolve({
+      //       id: Math.random().toString(36).substr(2, 9),
+      //       name: data.name.trim(),
+      //       couple_code: generateCoupleCode(),
+      //     })
+      //   }, 2000)
+      // })
 
-      toast.show('Couple created successfully!')
-      // In real implementation, this would be the actual couple ID
-      router.push('/couples/placeholder-id')
+      // toast.show('Couple created successfully!')
+      // // In real implementation, this would be the actual couple ID
+      // router.push('/couples/placeholder-id')
     } catch (error) {
       console.error('Error creating couple:', error)
       toast.show('Failed to create couple. Please try again.')

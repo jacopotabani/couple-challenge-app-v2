@@ -88,7 +88,7 @@ export function CouplesScreen({ items }: { items?: CoupleDocument[] }) {
   if (!session?.user) return null
 
   return (
-    <ScrollView f={1}>
+    <ScrollView flex={1}>
       <YStack gap="$6" p="$4" pb="$10">
         <XStack ai="center" jc="space-between" $sm={{ fd: 'column', ai: 'stretch', gap: '$4' }}>
           <YStack gap="$2">
@@ -140,6 +140,9 @@ export function CouplesScreen({ items }: { items?: CoupleDocument[] }) {
                     </Text>
                     <Text theme="alt2" fontSize="$2">
                       Code: {coupleData?.couple_code}
+                    </Text>
+                    <Text theme="alt2" fontSize="$2">
+                      ID: {coupleData?._id}
                     </Text>
                   </YStack>
                   <Link href={`/private/couples/${coupleData._id}`}>View Details</Link>

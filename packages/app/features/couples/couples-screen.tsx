@@ -32,21 +32,21 @@ import { Link } from 'solito/link'
 //   }>
 // }
 
-// async function fetchUserCouples(): Promise<CoupleData[]> {
-//   const response = await fetch('/api/couples/user', {
-//     credentials: 'include',
-//   })
+async function fetchUserCouples(): Promise<CoupleDocument[]> {
+  const response = await fetch('/api/couples/user', {
+    credentials: 'include',
+  })
 
-//   if (!response.ok) {
-//     throw new Error('Failed to fetch couples')
-//   }
+  if (!response.ok) {
+    throw new Error('Failed to fetch couples')
+  }
 
-//   return response.json()
-// }
+  return response.json()
+}
 
 export function CouplesScreen({ items }: { items?: CoupleDocument[] }) {
-  // const [couples, setCouples] = useState<CoupleData[]>([])
-  // const [isLoading, setIsLoading] = useState(true)
+  const [couples, setCouples] = useState<CoupleDocument[]>([])
+  const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
   const { data: session, isPending: userLoading } = authClient.useSession()
@@ -57,33 +57,33 @@ export function CouplesScreen({ items }: { items?: CoupleDocument[] }) {
   const coupleDetailsLink = useLink({ href: '/private/couples/[id]' })
 
   // Fetch couples when component mounts
-  // useEffect(() => {
-  //   if (session?.user && !userLoading) {
-  //     fetchUserCouples()
-  //       .then((data) => {
-  //         setCouples(data)
-  //         setIsError(false)
-  //       })
-  //       .catch((error) => {
-  //         console.error('Error fetching couples:', error)
-  //         setIsError(true)
-  //         toast.show('Error loading couples.')
-  //       })
-  //       .finally(() => {
-  //         setIsLoading(false)
-  //       })
-  //   } else if (!userLoading && !session?.user) {
-  //     setIsLoading(false)
-  //   }
-  // }, [session?.user, userLoading, toast])
+  useEffect(() => {
+    if (session?.user && !userLoading) {
+      fetchUserCouples()
+        .then((data) => {
+          setCouples(data)
+          setIsError(false)
+        })
+        .catch((error) => {
+          console.error('Error fetching couples:', error)
+          setIsError(true)
+          toast.show('Error loading couples.')
+        })
+        .finally(() => {
+          setIsLoading(false)
+        })
+    } else if (!userLoading && !session?.user) {
+      setIsLoading(false)
+    }
+  }, [session?.user, userLoading, toast])
 
-  // if (userLoading || isLoading) {
-  //   return (
-  //     <View flex={1} ai="center" jc="center">
-  //       <Spinner size="large" />
-  //     </View>
-  //   )
-  // }
+  if (userLoading || isLoading) {
+    return (
+      <View flex={1} ai="center" jc="center">
+        <Spinner size="large" />
+      </View>
+    )
+  }
 
   if (!session?.user) return null
 

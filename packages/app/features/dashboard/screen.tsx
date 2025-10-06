@@ -30,7 +30,7 @@ export function DashboardScreen({ pagesMode = false }: { pagesMode?: boolean }) 
     href: `/private/`,
   })
   const coupleScreen = useLink({
-    href: `/private/couples/create`,
+    href: `/private/couples`,
   })
 
   return (

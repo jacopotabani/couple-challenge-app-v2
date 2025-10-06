@@ -2,13 +2,14 @@ import { betterAuth } from 'better-auth'
 import { expo } from '@better-auth/expo'
 import { MongoClient } from 'mongodb'
 import { mongodbAdapter } from 'better-auth/adapters/mongodb'
+import { getAuthDatabaseSync } from '../../packages/api/db/mongodb'
 
 export const createAuth = (databaseUrl: string) => {
-  const client = new MongoClient(databaseUrl)
-  const db = client.db(process.env.DB_NAME)
+  // const client = new MongoClient(databaseUrl)
+  // const db = client.db(process.env.DB_NAME)
 
   return betterAuth({
-    database: mongodbAdapter(db),
+    database: mongodbAdapter(getAuthDatabaseSync()),
     emailAndPassword: {
       enabled: true,
     },

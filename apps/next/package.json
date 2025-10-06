@@ -11,6 +11,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@my/api": "workspace:*",
     "@my/app": "workspace:*",
     "@my/auth": "workspace:*",
     "@tamagui/config": "^1.132.18",

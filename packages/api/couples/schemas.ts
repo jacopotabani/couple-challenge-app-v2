@@ -1,5 +1,12 @@
 import { z } from 'zod'
 
+// Schema for couple member (embedded)
+export const CoupleMemberSchema = z.object({
+  user_ref: z.string(), // Will be ObjectId as string in API responses
+  joined_at: z.date(),
+  role: z.enum(['creator', 'member']).optional(),
+})
+
 // Schema for validating couple creation request
 export const CreateCoupleSchema = z.object({
   name: z
@@ -18,12 +25,24 @@ export const JoinCoupleSchema = z.object({
     }),
 })
 
-// Schema for couple response
+// Schema for couple response (with embedded members)
 export const CoupleResponseSchema = z.object({
   id: z.string(),
   name: z.string(),
   couple_code: z.string(),
   created_at: z.date(),
+  members: z.array(CoupleMemberSchema).optional(),
+})
+
+// Schema for detailed couple response (includes members)
+export const DetailedCoupleResponseSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  couple_code: z.string(),
+  created_by: z.string(),
+  created_at: z.date(),
+  updated_at: z.date(),
+  members: z.array(CoupleMemberSchema),
 })
 
 // Schema for create couple API response
@@ -33,6 +52,13 @@ export const CreateCoupleApiResponseSchema = z.object({
   couple: CoupleResponseSchema,
 })
 
+// Schema for join couple API response
+export const JoinCoupleApiResponseSchema = z.object({
+  success: z.boolean(),
+  message: z.string(),
+  couple: DetailedCoupleResponseSchema,
+})
+
 // Schema for error response
 export const ErrorResponseSchema = z.object({
   error: z.string(),
@@ -40,8 +66,11 @@ export const ErrorResponseSchema = z.object({
 })
 
 // Inferred types from schemas
+export type CoupleMember = z.infer<typeof CoupleMemberSchema>
 export type CreateCoupleInput = z.infer<typeof CreateCoupleSchema>
 export type JoinCoupleInput = z.infer<typeof JoinCoupleSchema>
 export type CoupleResponse = z.infer<typeof CoupleResponseSchema>
+export type DetailedCoupleResponse = z.infer<typeof DetailedCoupleResponseSchema>
 export type CreateCoupleApiResponse = z.infer<typeof CreateCoupleApiResponseSchema>
+export type JoinCoupleApiResponse = z.infer<typeof JoinCoupleApiResponseSchema>
 export type ErrorResponse = z.infer<typeof ErrorResponseSchema>

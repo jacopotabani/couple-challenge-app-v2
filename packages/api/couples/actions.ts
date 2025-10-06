@@ -1,6 +1,7 @@
 import { ObjectId } from 'mongodb'
 import { getAuthDatabase } from '../db/mongoclient'
-import type { CoupleDocument, CoupleMemberDocument } from './types'
+import type { CoupleDocument, CoupleMember } from './types'
+import type { UserDocument } from '../users/types'
 
 // Get the couples collection with proper typing
 export const getCouplesCollection = async () => {
@@ -8,12 +9,10 @@ export const getCouplesCollection = async () => {
   return database.collection<Omit<CoupleDocument, '_id'> & { _id?: ObjectId }>('couples')
 }
 
-// Get the couple members collection with proper typing
-export const getCoupleMembersCollection = async () => {
+// Get the users collection for population
+export const getUsersCollection = async () => {
   const database = await getAuthDatabase()
-  return database.collection<Omit<CoupleMemberDocument, '_id'> & { _id?: ObjectId }>(
-    'couple_members'
-  )
+  return database.collection<Omit<UserDocument, '_id'> & { _id?: ObjectId }>('user')
 }
 
 // Generate a unique couple code
@@ -52,22 +51,29 @@ export const generateUniqueCoupleCode = async (maxAttempts: number = 10): Promis
   throw new Error('Unable to generate unique couple code after maximum attempts')
 }
 
-// Create a new couple
+// Create a new couple with embedded creator member
 export const createCouple = async (
   name: string,
   createdBy: string
 ): Promise<{ coupleId: ObjectId; coupleCode: string }> => {
   const couplesCollection = await getCouplesCollection()
-  const membersCollection = await getCoupleMembersCollection()
 
   // Generate unique couple code
   const coupleCode = await generateUniqueCoupleCode()
 
-  // Create the couple document
+  // Create the creator member
+  const creatorMember: CoupleMember = {
+    user_ref: new ObjectId(createdBy),
+    joined_at: new Date(),
+    role: 'creator',
+  }
+
+  // Create the couple document with embedded creator
   const newCouple: Omit<CoupleDocument, '_id'> = {
     name: name.trim(),
     couple_code: coupleCode,
-    created_by: createdBy,
+    created_by: new ObjectId(createdBy),
+    members: [creatorMember], // Embedded array with creator as first member
     created_at: new Date(),
     updated_at: new Date(),
   }
@@ -76,22 +82,6 @@ export const createCouple = async (
 
   if (!coupleResult.insertedId) {
     throw new Error('Failed to create couple')
-  }
-
-  // Add the creator as the first member
-  const memberDocument: Omit<CoupleMemberDocument, '_id'> = {
-    couple_id: coupleResult.insertedId,
-    user_id: createdBy,
-    joined_at: new Date(),
-    role: 'creator',
-  }
-
-  const memberResult = await membersCollection.insertOne(memberDocument)
-
-  if (!memberResult.insertedId) {
-    // Rollback couple creation if member insertion fails
-    await couplesCollection.deleteOne({ _id: coupleResult.insertedId })
-    throw new Error('Failed to add member to couple')
   }
 
   return {
@@ -106,35 +96,62 @@ export const getCoupleById = async (coupleId: string): Promise<CoupleDocument | 
   return await couplesCollection.findOne({ _id: new ObjectId(coupleId) })
 }
 
+// Get couple by ID with populated members
+export const getCoupleByIdWithPopulatedMembers = async (coupleId: string) => {
+  const couplesCollection = await getCouplesCollection()
+  const usersCollection = await getUsersCollection()
+
+  const couple = await couplesCollection.findOne({ _id: new ObjectId(coupleId) })
+  if (!couple) return null
+
+  // Populate members with user data
+  const populatedMembers = await Promise.all(
+    couple.members.map(async (member) => {
+      const user = await usersCollection.findOne({ _id: member.user_ref })
+      return {
+        ...member,
+        user: user
+          ? {
+              id: user.id,
+              name: user.name,
+              email: user.email,
+              image: user.image,
+            }
+          : null,
+      }
+    })
+  )
+
+  return {
+    ...couple,
+    members: populatedMembers,
+  }
+}
+
 // Get couple by code
 export const getCoupleByCode = async (coupleCode: string): Promise<CoupleDocument | null> => {
   const couplesCollection = await getCouplesCollection()
   return await couplesCollection.findOne({ couple_code: coupleCode })
 }
 
-// Get couples for a user
+// Get couples for a user (using embedded members)
 export const getCouplesForUser = async (userId: string): Promise<CoupleDocument[]> => {
-  const membersCollection = await getCoupleMembersCollection()
   const couplesCollection = await getCouplesCollection()
-
-  // Find all couples where the user is a member
-  const memberships = await membersCollection.find({ user_id: userId }).toArray()
-  const coupleIds = memberships.map((membership) => membership.couple_id)
-
-  if (coupleIds.length === 0) {
-    return []
-  }
-
-  return await couplesCollection.find({ _id: { $in: coupleIds } }).toArray()
+  console.log('couplesCollection:', couplesCollection)
+  // Find all couples where the user is a member in the embedded members array
+  return await couplesCollection
+    .find({
+      'members.user_ref': new ObjectId(userId),
+    })
+    .toArray()
 }
 
-// Join a couple by code
+// Join a couple by code (add member to embedded array)
 export const joinCoupleByCode = async (
   coupleCode: string,
   userId: string
-): Promise<{ success: boolean; coupleId?: ObjectId; error?: string }> => {
+): Promise<{ success: boolean; couple?: CoupleDocument; error?: string }> => {
   const couplesCollection = await getCouplesCollection()
-  const membersCollection = await getCoupleMembersCollection()
 
   // Find the couple
   const couple = await couplesCollection.findOne({ couple_code: coupleCode })
@@ -143,34 +160,102 @@ export const joinCoupleByCode = async (
   }
 
   // Check if user is already a member
-  const existingMembership = await membersCollection.findOne({
-    couple_id: couple._id,
-    user_id: userId,
-  })
-
-  if (existingMembership) {
+  const existingMember = couple.members?.find((member) => member.user_ref.toString() === userId)
+  if (existingMember) {
     return { success: false, error: 'User is already a member of this couple' }
   }
 
-  // Add the user as a member
-  const memberDocument: Omit<CoupleMemberDocument, '_id'> = {
-    couple_id: couple._id!,
-    user_id: userId,
+  // Create new member
+  const newMember: CoupleMember = {
+    user_ref: new ObjectId(userId),
     joined_at: new Date(),
     role: 'member',
   }
 
-  const memberResult = await membersCollection.insertOne(memberDocument)
+  // Add the user to the members array using $push
+  const updateResult = await couplesCollection.updateOne(
+    { _id: couple._id },
+    {
+      $push: { members: newMember },
+      $set: { updated_at: new Date() },
+    }
+  )
 
-  if (!memberResult.insertedId) {
+  if (updateResult.modifiedCount === 0) {
     return { success: false, error: 'Failed to join couple' }
   }
 
-  return { success: true, coupleId: couple._id }
+  // Get the updated couple
+  const updatedCouple = await getCoupleById(couple._id!.toString())
+
+  return { success: true, couple: updatedCouple! }
 }
 
-// Get members of a couple
-export const getCoupleMembers = async (coupleId: string): Promise<CoupleMemberDocument[]> => {
-  const membersCollection = await getCoupleMembersCollection()
-  return await membersCollection.find({ couple_id: new ObjectId(coupleId) }).toArray()
+// Remove member from couple (remove from embedded array)
+export const removeMemberFromCouple = async (
+  coupleId: string,
+  userId: string
+): Promise<{ success: boolean; error?: string }> => {
+  const couplesCollection = await getCouplesCollection()
+
+  const updateResult = await couplesCollection.updateOne(
+    { _id: new ObjectId(coupleId) },
+    {
+      $pull: { members: { user_ref: new ObjectId(userId) } },
+      $set: { updated_at: new Date() },
+    }
+  )
+
+  if (updateResult.modifiedCount === 0) {
+    return { success: false, error: 'Failed to remove member from couple' }
+  }
+
+  return { success: true }
+}
+
+// Update member role in couple
+export const updateMemberRole = async (
+  coupleId: string,
+  userId: string,
+  newRole: 'creator' | 'member'
+): Promise<{ success: boolean; error?: string }> => {
+  const couplesCollection = await getCouplesCollection()
+
+  const updateResult = await couplesCollection.updateOne(
+    {
+      _id: new ObjectId(coupleId),
+      'members.user_ref': new ObjectId(userId),
+    },
+    {
+      $set: {
+        'members.$.role': newRole,
+        updated_at: new Date(),
+      },
+    }
+  )
+
+  if (updateResult.modifiedCount === 0) {
+    return { success: false, error: 'Failed to update member role' }
+  }
+
+  return { success: true }
+}
+
+// Get member from couple
+export const getMemberFromCouple = async (
+  coupleId: string,
+  userId: string
+): Promise<CoupleMember | null> => {
+  const couple = await getCoupleById(coupleId)
+  if (!couple) {
+    return null
+  }
+
+  return couple.members?.find((member) => member.user_ref.toString() === userId) || null
+}
+
+// Check if user is member of couple
+export const isUserMemberOfCouple = async (coupleId: string, userId: string): Promise<boolean> => {
+  const member = await getMemberFromCouple(coupleId, userId)
+  return !!member
 }

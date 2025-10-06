@@ -1,14 +1,20 @@
 import { betterAuth } from 'better-auth'
 import { expo } from '@better-auth/expo'
-import { MongoClient } from 'mongodb'
-import { mongodbAdapter } from 'better-auth/adapters/mongodb'
-
-export const createAuth = (databaseUrl: string) => {
-  const client = new MongoClient(databaseUrl)
-  const db = client.db(process.env.DB_NAME)
-
+import { prismaAdapter } from 'better-auth/adapters/prisma'
+import { PrismaClient } from '@prisma/client'
+// import prisma from '../../packages/db/src'
+// import { prisma } from '@my/prisma/client'
+const prisma = new PrismaClient()
+export const createAuth = (databaseUrl?: string) => {
   return betterAuth({
-    database: mongodbAdapter(db),
+    advanced: {
+      database: {
+        generateId: false,
+      },
+    },
+    database: prismaAdapter(prisma, {
+      provider: 'mongodb',
+    }),
     emailAndPassword: {
       enabled: true,
     },

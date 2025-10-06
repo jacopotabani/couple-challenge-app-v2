@@ -1,0 +1,5 @@
+{
+  "name": "@my/prisma",
+  "main": "./src/client.ts",
+  "types": "./src/client.ts"
+}

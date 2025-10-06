@@ -23,7 +23,13 @@
     "check-tamagui": "tamagui check",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prepare": "husky"
+    "prepare": "husky",
+    "db:generate": "yarn workspace @my/prisma run db:generate",
+    "db:push": "yarn workspace @my/prisma run db:push",
+    "db:migrate": "yarn workspace @my/prisma run db:migrate",
+    "db:migrate:reset": "yarn workspace @my/prisma run db:migrate:reset",
+    "db:studio": "yarn workspace @my/prisma run db:studio",
+    "db:seed": "yarn workspace @my/prisma run db:seed"
   },
   "resolutions": {
     "react": "19.0.0",
